@@ -1,0 +1,10 @@
+<!--pages/pages-list/charts/charts.wxml-->
+<view class="body flex-cen-col">
+  <view bindtap="gotoPage" data-page="line" class="mt20 li">Line</view>
+  <view bindtap="gotoPage" data-page="scrollline" class="mt20 li">ScrollLine</view>
+  <view bindtap="gotoPage" data-page="column" class="li">Column</view>
+  <view bindtap="gotoPage" data-page="pie" class="li">Pie</view>
+  <view bindtap="gotoPage" data-page="ring" class="li">Ring</view>
+  <view bindtap="gotoPage" data-page="area" class="li">Area</view>
+  <view bindtap="gotoPage" data-page="radar" class="li">Radar</view>
+</view>

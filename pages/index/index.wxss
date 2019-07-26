@@ -1,0 +1,4 @@
+/**index.wxss**/
+.body{height:100vh;font-size: 28rpx;}
+.li{width:250rpx;height:50rpx;line-height: 50rpx;text-align: center;border:1rpx solid #ddd;border-radius: 10rpx;margin:20rpx 0;}
+/* .li button{width:99%;height:46rpx;line-height: 50rpx;border-radius: 10rpx;margin-left:1%;} */

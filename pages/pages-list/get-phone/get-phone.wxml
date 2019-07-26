@@ -1,0 +1,6 @@
+<!--pages/pages-list/get-phone/get-phone.wxml-->
+<view class="body flex-cen">
+  <view>您的手机号：</view>
+  <view class="h4">{{myPhone}}</view>
+  <getPhoneNumber bindgetPhoneNumber="getPhoneNumber" wx:if="{{isGetPhoneNumber}}"></getPhoneNumber>
+</view>

@@ -1,0 +1,6 @@
+<view class="body flex-cen-col">
+  <navigator class="titles2" url="/pages/pages-list/calendar/calendars/calendar">弹出式日历</navigator>
+  <navigator class="titles2" url="/pages/pages-list/calendar/calendarTemplate/index">日历控件</navigator>
+  <navigator class="titles2" url="/pages/pages-list/calendar/datepickerTemplate/index">日期选择器</navigator>
+  <navigator class="titles2" url="/pages/pages-list/calendar/calendar/index">日历独立页面</navigator>
+</view>

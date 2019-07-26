@@ -1,0 +1,3 @@
+/* pages/login/login.wxss */
+.body{height:100vh;font-size: 50rpx;}
+button{border:1rpx solid #333;padding:0 40rpx;width:30%;}

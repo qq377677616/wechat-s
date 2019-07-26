@@ -1,0 +1,99 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": false,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"nodeModules": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.3",
+	"appid": "wx1d585c8c2fffe589",
+	"projectname": "%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%88%9D%E5%A7%8B%E6%A8%A1%E6%9D%BF%E7%9B%AE%E5%BD%95",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": 0,
+					"name": "定位",
+					"pathName": "pages/pages-list/location/location",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/pages-list/poster/poster",
+					"pathName": "pages/pages-list/poster/poster",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "条形码二维码",
+					"pathName": "pages/pages-list/codes/codes",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "生成海报",
+					"pathName": "pages/pages-list/barcode/barcode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "日历",
+					"pathName": "pages/pages-list/calendar/calendar",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "html解析",
+					"pathName": "pages/pages-list/html/html",
+					"scene": null
+				}
+			]
+		}
+	}
+}

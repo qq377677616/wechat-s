@@ -1,0 +1,3 @@
+<view class="container flex-cen-col">
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px" bindtouchstart="touchHandler"></canvas>
+</view>

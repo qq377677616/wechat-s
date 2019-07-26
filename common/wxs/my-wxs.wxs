@@ -1,0 +1,8 @@
+//取整
+var parseInts = function (x) {
+  return parseInt(x)
+}
+
+module.exports = {
+  parseInt: parseInts
+}
