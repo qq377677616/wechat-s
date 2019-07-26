@@ -1,6 +1,5 @@
 //index.js
 //获取应用实例
-const app = getApp()
 import api from '../../utils/api/myRequests.js'
 import mta from '../../utils/mta_analysis.js'
 import tool from '../../utils/publics/tool.js'
@@ -19,11 +18,12 @@ Page({
       { name: "摇一摇", url: "/pages/pages-list/shake/shake"},
       { name: "环形进度条", url: "/pages/pages-list/circle/circle"},
       { name: "charts图表", url: "/pages/pages-list/charts/charts"},
+      { name: "未完待续...", url: ""}
     ]
   },
   //跳转页面
   jumps(e) {
-    tool.jump_nav(this.data.jumpList[e.currentTarget.dataset.index].url)
+    if (this.data.jumpList[e.currentTarget.dataset.index].url) tool.jump_nav(this.data.jumpList[e.currentTarget.dataset.index].url)
   },
   onLoad: function () {
     mta.Page.init()//腾讯统计

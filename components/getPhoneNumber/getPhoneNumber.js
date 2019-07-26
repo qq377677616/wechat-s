@@ -49,16 +49,13 @@ Component({
         })
       }).then((value) => {
         const data = value.data.data;
-        if (value.data.status == 1) {
-          this.data.session_key = data.session_key
+        if (value.data.code == 1) {
+          this.data.session_key = data.data.session_key
           console.log("【拿到session_key】", this.data.session_key)
-          wx.setStorageSync("userId", {
-            openid: data.openid,
-            user_id: data.id
-          })
           tool.loading_h()
           this.showHideModal()
         } else {
+          tool.loading_h()
           console.log("【服务器异常，请稍后再试】")
           this.myLogin()
         }
@@ -88,16 +85,16 @@ Component({
       console.log("encrypted_data", this.data.encryptedData)
       console.log("iv", this.data.iv)
       let _data = {
-        user_id: wx.getStorageSync("userId").user_id,
+        user_id: wx.getStorageSync("_login").user_id,
         session_key: this.data.session_key,
         encrypted_data: this.data.encryptedData,
         iv: this.data.iv
       }
       api.getPhoneNumber(_data).then(res => {
         console.log("getPhoneNumber", res)
-        if (res.data.status == 1) {
+        if (res.data.code == 1) {
           let _userInfo = wx.getStorageSync("userInfo")
-          _userInfo.phone = res.data.data.mobile;
+          _userInfo.phone = res.data.data.mobile
           wx.setStorageSync("userInfo", _userInfo)
           tool.loading_h()
           this.triggerEvent("getPhoneNumber", { phone: wx.getStorageSync("userInfo").phone })
@@ -118,3 +115,4 @@ Component({
     },
   }
 })
+
