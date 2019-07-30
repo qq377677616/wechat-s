@@ -1,5 +1,5 @@
 <!--pages/pages-list/circle/circle.wxml-->
-<wxs src="../../../common/wxs/my-wxs.wxs" module="myWxs"></wxs>
+<!-- <wxs src="../../../common/wxs/my-wxs.wxs" module="myWxs"></wxs>
 <view class="body flex-cen">
   <view class='progress_box'>
     <canvas class="progress_bg"   canvas-id="canvasProgressbg">  </canvas> 
@@ -8,4 +8,5 @@
         <text class='progress_info'> {{myWxs.parseInt(5*(count-1)/3)}}%</text>
     </view>     
   </view>
-</view>
+</view> -->
+<circle circle="{{circle}}"></circle>

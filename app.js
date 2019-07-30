@@ -1,7 +1,7 @@
 //app.js
-const mta = require('./utils/mta_analysis.js')
-const auth = require('./utils/publics/authorization.js')
-const tool = require('./utils/publics/tool.js')
+import mta from './utils/mta_analysis.js'
+import auth from './utils/publics/authorization.js'
+import tool from './utils/publics/tool.js'
 App({
   onLaunch: function () {
     //腾讯统计

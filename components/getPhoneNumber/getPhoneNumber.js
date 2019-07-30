@@ -16,14 +16,15 @@ Component({
   data: {
     showModal: {
       isShow: false,
+      type: 1,
       title: "手机号授权",
       test: "为了更好的体验，智趣启辰将自动获取您的手机号。",
       cancelText: "取消",
       confirmText: "授权",
-      color_confirm: '#0BB20C',
-      parent_id: '',
-      channel_id: ''
+      color_confirm: '#0BB20C'
     },
+    parent_id: '',
+    channel_id: '',
     requestNum: 0
   },
   ready() {

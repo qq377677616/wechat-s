@@ -21,6 +21,9 @@ Page({
       { name: "未完待续...", url: ""}
     ]
   },
+  operation(e) {
+    console.log(e.detail)
+  },
   //跳转页面
   jumps(e) {
     if (this.data.jumpList[e.currentTarget.dataset.index].url) tool.jump_nav(this.data.jumpList[e.currentTarget.dataset.index].url)

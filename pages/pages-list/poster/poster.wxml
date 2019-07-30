@@ -9,5 +9,5 @@
       </view>
    </view>
    <canvas canvas-id="myCanvas" id="myCanvas"></canvas>
-   <showModal container="{{showModal}}" bindoperation="operation"></showModal>
+   <showModal showModalOption="{{showModalOption}}" bindoperation="operation"></showModal>
 </view>

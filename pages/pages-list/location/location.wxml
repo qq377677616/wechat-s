@@ -6,5 +6,5 @@
       <text>{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
     </picker>
   </view>
-  <myModal container="{{showModal}}" bindoperation="operation"></myModal>
+  <showModal showModalOption="{{showModalOption}}" bindoperation="operation"></showModal>
 </view>

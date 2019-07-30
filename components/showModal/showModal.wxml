@@ -1,11 +1,15 @@
 <!--components/showModal/showModal.wxml-->
-<view class="showModal" wx:if="{{container.isShow}}">
+<view class="showModal" wx:if="{{showModalOption.isShow}}">
   <view class="showModal-box">
-    <view class="h3">{{container.title}}</view>
-    <view class="p">{{container.test}}</view>
+    <view class="h3">{{showModalOption.title}}</view>
+    <view class="p">{{showModalOption.test}}</view>
     <view class="btn">
-      <view class="cancel" data-type="0" bindtap='operation'>{{container.cancelText}}</view>
-      <view><button data-type="1" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap='operation' style="color:{{container.color_confirm}}">{{container.confirmText}}</button></view>
+      <view class="cancel" data-type="0" bindtap='operation'>{{showModalOption.cancelText}}</view>
+      <view>
+        <button wx:if="{{showModalOption.type == 0}}" data-type="1" bindtap='operation' style="color:{{showModalOption.color_confirm}}">{{showModalOption.confirmText}}</button>
+        <button wx:if="{{showModalOption.type == 1}}"data-type="1" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumberUserInfo" bindtap='operation' style="color:{{showModalOption.color_confirm}}">{{showModalOption.confirmText}}</button>
+        <button wx:if="{{showModalOption.type == 2}}"data-type="1" open-type="getUserInfo" bindgetuserinfo="getPhoneNumberUserInfo" bindtap='operation' style="color:{{showModalOption.color_confirm}}">{{showModalOption.confirmText}}</button>
+      </view>
     </view>
   </view>
 </view>

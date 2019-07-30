@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "定位",
   "usingComponents": {
-    "myModal": "/components/showModal/myModal"
+    "showModal": "/components/showModal/showModal"
   }
 }

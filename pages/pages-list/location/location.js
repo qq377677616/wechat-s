@@ -8,8 +8,9 @@ Page({
    */
   data: {
     region: ['北京市', '北京市', '东城区'],
-    showModal: {
+    showModalOption: {
       isShow: false,
+      type: 0,
       title: "获取位置信息",
       test: "小程序将访问您的手机定位，自动定位到您当前所在城市信息。",
       cancelText: "取消",
@@ -75,8 +76,8 @@ Page({
   },
   //打开、关闭自定义Modal弹框
   showHideModal() {
-    let _showModal = this.data.showModal
-    _showModal.isShow = !_showModal.isShow
-    this.setData({ showModal: _showModal })
+    let _showModalOption = this.data.showModalOption
+    _showModalOption.isShow = !_showModalOption.isShow
+    this.setData({ showModalOption: _showModalOption })
   }
 })

@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showModal: {
+    showModalOptionOption: {
       isShow: false,
       title: "访问手机相册",
       test: "小程序将访问您的手机相册，将生成的海报保存到您的手机相册。",
@@ -37,21 +37,18 @@ Page({
         tool.alert("海报生成失败，请稍后再试")
       }
     }, 15000)
-    console.log("_this.data.userInfo.avatarUrl", _this.data.userInfo)
+    console.log("_this.data.userInfo.avatarUrl", _this.data.userInfo.avatarUrl)
     Promise.all([
       util.getImgLocalPath("http://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/poster.jpg"),
-      util.getImgLocalPath('https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/rect.png'), 
       util.getImgLocalPath(_this.data.userInfo.avatarUrl),
-      util.getImgLocalPath('https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/arc.png'),
       util.getImgLocalPath("http://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/code.jpg")]).then(res => {
+        console.log("res", res)
         tool.canvasImg({
           canvasId: 'myCanvas',
           imgList: [
             { url: res[0], imgW: 574, imgH: 726, imgX: 0, imgY: 0 },
-            { url: res[1], imgW: 532, imgH: 738, imgX: 21, imgY: 24 },
-            { url: res[2], imgW: 78, imgH: 78, imgX: 26, imgY: 788, isRadius: true },
-            { url: res[3], imgW: 80, imgH: 80, imgX: 25, imgY: 785 },
-            { url: res[4], imgW: 91, imgH: 91, imgX: 452, imgY: 876 },
+            { url: res[1], imgW: 78, imgH: 78, imgX: 26, imgY: 788, isRadius: true },
+            { url: res[2], imgW: 91, imgH: 91, imgX: 452, imgY: 876 },
           ],
           textList: [
             { string: this.data.userInfo.nickName, color: '#373737', fontSize: '23', fontFamily: 'Arial', bold: false, textX: 117, textY: 797 },
@@ -130,8 +127,8 @@ Page({
   },
   //打开、关闭自定义Modal弹框
   showHideModal() {
-    let _showModal = this.data.showModal
-    _showModal.isShow = !_showModal.isShow
-    this.setData({ showModal: _showModal })
+    let _showModalOption = this.data.showModalOption
+    _showModalOption.isShow = !_showModalOption.isShow
+    this.setData({ showModalOption: _showModalOption })
   },
 })
