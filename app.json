@@ -31,13 +31,13 @@
   ],
   "window": {
     "navigationBarTitleText": "小程序目录模板",
-    "navigationBarBackgroundColor": "#A3271F",
+    "navigationBarBackgroundColor": "#038103",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#A3271F",
+    "selectedColor": "#038103",
     "backgroundColor": "#fff",
     "borderStyle": "black",
     "position": "bottom",
