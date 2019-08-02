@@ -18,6 +18,8 @@ Page({
       { name: "摇一摇", url: "/pages/pages-list/shake/shake"},
       { name: "环形进度条", url: "/pages/pages-list/circle/circle"},
       { name: "charts图表", url: "/pages/pages-list/charts/charts"},
+      { name: "星星评分", url: "/pages/pages-list/star-score/star-score"},
+      { name: "抽奖系列", url: "/pages/pages-list/prize/index"},
       { name: "未完待续...", url: ""}
     ]
   },

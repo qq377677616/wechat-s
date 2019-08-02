@@ -15,7 +15,7 @@ Component({
       }
     }
   },
-
+  
   /**
    * 组件的初始数据
    */
@@ -27,6 +27,12 @@ Component({
     this.drawProgressbg()
     // this.drawCircle(.5)
     this.countInterval()
+  },
+  observers: {
+    "circle": function(val) {
+      console.log(val)
+      this.countInterval()
+    }
   },
   /**
    * 组件的方法列表
@@ -47,13 +53,9 @@ Component({
       ctx.draw()
     },
     countInterval: function () {
-      // 设置倒计时 定时器 每100毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
+      // 设置倒计时 定时器，计数器count+1 ,耗时6秒绘一圈
       this.countTimer = setInterval(() => {
         if (this.data.count <= this.data.circle.progress * 3 / 5) {
-          /* 绘制彩色圆环进度条  
-          注意此处 传参 step 取值范围是0到2，
-          所以 计数器 最大值 60 对应 2 做处理，计数器count=60的时候step=2
-          */
           this.drawCircle(this.data.count / (60 / 2))
           let _count = this.data.count + 1
           this.setData({ count: _count })

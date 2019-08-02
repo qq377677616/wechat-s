@@ -1,12 +1,15 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/pages-list/login/login",
+    "pages/pages-list/get-phone/get-phone",
     "pages/pages-list/webview/webview",
     "pages/pages-list/location/location",
     "pages/pages-list/poster/poster",
     "pages/pages-list/codes/codes",
     "pages/pages-list/calendar/index",
     "pages/pages-list/html/html",
+    "pages/pages-list/shake/shake",
     "pages/pages-list/calendar/calendars/calendar",
     "pages/pages-list/calendar/calendarTemplate/index",
     "pages/pages-list/calendar/datepickerTemplate/index",
@@ -19,10 +22,15 @@
     "pages/pages-list/charts/charts/pie/pie",
     "pages/pages-list/charts/charts/ring/ring",
     "pages/pages-list/charts/charts/area/area",
-    "pages/pages-list/circle/circle"
+    "pages/pages-list/circle/circle",
+    "pages/pages-list/star-score/star-score",
+    "pages/pages-list/prize/index",
+    "pages/pages-list/prize/disk/disk",
+    "pages/pages-list/prize/disks/disks",
+    "pages/pages-list/prize/horse/horse"
   ],
   "window": {
-    "navigationBarTitleText": "小程序初始目录",
+    "navigationBarTitleText": "小程序目录模板",
     "navigationBarBackgroundColor": "#A3271F",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true

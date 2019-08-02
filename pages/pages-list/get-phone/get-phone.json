@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "获取手机号", 
   "usingComponents": {
     "getPhoneNumber": "/components/getPhoneNumber/getPhoneNumber"
   }
