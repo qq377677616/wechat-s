@@ -8,8 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showModalOptionOption: {
+    showModalOption: { 
       isShow: false,
+      type: 0,
       title: "访问手机相册",
       test: "小程序将访问您的手机相册，将生成的海报保存到您的手机相册。",
       cancelText: "取消",
@@ -42,9 +43,9 @@ Page({
       util.getImgLocalPath("http://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/poster.jpg"),
       util.getImgLocalPath(_this.data.userInfo.avatarUrl),
       util.getImgLocalPath("http://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/code.jpg")]).then(res => {
-        console.log("res", res)
         tool.canvasImg({
           canvasId: 'myCanvas',
+          canvasSize: '574*1022',
           imgList: [
             { url: res[0], imgW: 574, imgH: 726, imgX: 0, imgY: 0 },
             { url: res[1], imgW: 78, imgH: 78, imgX: 26, imgY: 788, isRadius: true },
@@ -52,8 +53,8 @@ Page({
           ],
           textList: [
             { string: this.data.userInfo.nickName, color: '#373737', fontSize: '23', fontFamily: 'Arial', bold: false, textX: 117, textY: 797 },
-            { string: '我正在参与投票活动，这是我的作品', color: '#a0a3a7', fontSize: '20', fontFamily: 'Arial', bold: false, textX: 116, textY: 833 },
-            { string: '长按识别二维码，马上进入体验', color: '#9fa0a0', fontSize: '13', fontFamily: 'Arial', bold: false, textX: 364, textY: 977 },
+            { string: '我正在参与投票活动，这是我的作品我正在参与投票活动，这是我的作品我正在参与投票活动。', color: '#a0a3a7', fontSize: '20', fontFamily: 'Arial', bold: false, textX: 116, textY: 833, wrap: 10, lineHeight: 30 },
+            { string: '长按识别二维码，马上进入体验', color: '#9fa0a0', fontSize: '13', fontFamily: 'Arial', bold: false, textX: 364, textY: 977 }
           ]
         }, res => {
           tool.loading_h();
@@ -71,13 +72,6 @@ Page({
   savePhoto() {
     tool.loading("海报保存中", "loading")
     this.isSettingScope()
-  },
-  closeIcon() {
-    this.setData({
-      getIcon: true,
-      isState: false
-
-    })
   },
   //判断是否授权访问手机相册
   isSettingScope() {
@@ -99,7 +93,7 @@ Page({
       filePath: imgUrl,
       success(res) {
         setTimeout(() => {
-          tool.alert("已保存到手机相册", "success")
+          tool.alert("已保存到手机相册")
           _this.setData({
             canvasHidden: false,
             isShare: true

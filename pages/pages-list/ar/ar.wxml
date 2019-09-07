@@ -1,0 +1,13 @@
+<cover-view class="page-body">
+  <cover-view class="page-body-wrapper">
+    <cover-view class="camera">
+      <camera device-position="{{device}}" flash="off" binderror="error" frame-size="small" style="width: 260px; height: 260px;">
+        <cover-image src="./ar.png"></cover-image>
+      </camera>
+    </cover-view>
+    <cover-view bindtap="deviceSwitch" class="deviceSwitch">切换前后摄像头</cover-view>
+    <!-- <view class="preview-tips" wx:if="{{src}}">AR识别到的内容：</view> -->
+    <cover-image mode="widthFix" wx:if="{{src}}" src="{{src}}" style="width: {{imgw}}; height: {{imgh}};display:block;"></cover-image>
+    <!-- <image mode="widthFix" wx:if="{{src}}" src="{{src}}"></image> -->
+  </cover-view>
+</cover-view>

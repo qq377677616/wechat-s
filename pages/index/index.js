@@ -1,13 +1,13 @@
 //index.js
-//获取应用实例
 import api from '../../utils/api/myRequests.js'
 import mta from '../../utils/mta_analysis.js'
 import tool from '../../utils/publics/tool.js'
 import auth from'../../utils/publics/authorization.js'
+import backgroundAudio from '../../utils/backgroundAudio.js'
 Page({
   data: {
     jumpList: [
-      { name: "登录授权", url: "/pages/pages-list/login/login"},
+      { name: "授权", url: "/pages/pages-list/login/login"},
       { name: "获取手机号", url: "/pages/pages-list/get-phone/get-phone"},
       { name: "嵌入h5", url: "/pages/pages-list/webview/webview"},
       { name: "定位", url: "/pages/pages-list/location/location"},
@@ -20,11 +20,14 @@ Page({
       { name: "charts图表", url: "/pages/pages-list/charts/charts"},
       { name: "星星评分", url: "/pages/pages-list/star-score/star-score"},
       { name: "抽奖系列", url: "/pages/pages-list/prize/index"},
+      { name: "地图", url: "/pages/pages-list/map/index"},
+      { name: "websocket", url: "/pages/pages-list/websocket/websocket"},
+      { name: "AR", url: "/pages/pages-list/ar/ar"},
+      { name: "图片验证码", url: "/pages/pages-list/img-code/img-code"},
+      { name: "计算属性与监听", url: "/pages/pages-list/computed-watch/computed-watch"},
+      { name: "中英文语言", url: "/pages/pages-list/ch-en/ch-en"},
       { name: "未完待续...", url: ""}
     ]
-  },
-  operation(e) {
-    console.log(e.detail)
   },
   //跳转页面
   jumps(e) {
@@ -32,5 +35,16 @@ Page({
   },
   onLoad: function () {
     mta.Page.init()//腾讯统计
+  },
+  onShow() {
+    this.setData({ isPause: backgroundAudio.audioState(getApp()) })//背景音乐相关
+  },
+  onShareAppMessage(res) {
+    console.log("res", res)
+    return {
+      title: '抽奖赢世界杯热门球票！亲测中奖概率很高哦！',
+      path: '/pages/prize/prize?isShare=1&user_id=' + wx.getStorageSync('_login').user_id,
+      imageUrl: this.data.IMGSERVICE + '/prize/share_prize.png'
+    }
   }
 })

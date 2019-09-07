@@ -1,6 +1,7 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "初始目录模板1.2",
+  "disableScroll": true,
   "usingComponents": {
-    
+    "controls": "/components/audiocontrols/controls"
   }
 }

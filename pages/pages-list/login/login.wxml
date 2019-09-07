@@ -1,5 +1,9 @@
 <!--pages/login/login.wxml-->
 <view class="container body flex-cen">
-  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录授权</button>
-  <showModal container="{{showModal}}" bindoperation="operation"></showModal>
+  <view class="user">
+    <image src="{{userInfo.avatarUrl || 'http://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/my/avatar.png'}}"></image>
+    <view class="nick-name">{{userInfo.nickName ? userInfo.nickName : '点击授权'}}</view>
+    <button wx:if="{{!userInfo.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+  </view>
+  <controls isPause="{{isPause}}"></controls>
 </view>

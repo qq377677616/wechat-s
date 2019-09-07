@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 14,
 			"list": [
 				{
 					"id": 0,
@@ -75,8 +75,8 @@
 				},
 				{
 					"id": 3,
-					"name": "生成海报",
-					"pathName": "pages/pages-list/barcode/barcode",
+					"name": "海报",
+					"pathName": "pages/pages-list/poster/poster",
 					"query": "",
 					"scene": null
 				},
@@ -91,6 +91,70 @@
 					"id": -1,
 					"name": "html解析",
 					"pathName": "pages/pages-list/html/html",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pages-list/map/qqmap/qqmap",
+					"pathName": "pages/pages-list/map/qqmap/qqmap",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "components/gesture/gesture",
+					"pathName": "components/gesture/gesture",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "websocket",
+					"pathName": "pages/pages-list/websocket/websocket",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "AR",
+					"pathName": "pages/pages-list/ar/ar",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "图片验证码",
+					"pathName": "pages/pages-list/img-code/img-code",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "pages/pages-list/computed-watch/computed-watch",
+					"pathName": "pages/pages-list/computed-watch/computed-watch",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地图",
+					"pathName": "pages/pages-list/map/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "登录",
+					"pathName": "pages/pages-list/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "中英文",
+					"pathName": "pages/pages-list/ch-en/ch-en",
+					"query": "",
 					"scene": null
 				}
 			]

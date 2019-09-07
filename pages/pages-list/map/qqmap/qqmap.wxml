@@ -1,0 +1,13 @@
+<view>
+  <map  class='map'
+      style='top:{{140 + topNav.height}}rpx'
+      id="map" 
+      longitude="113.94829080193026" 
+      latitude="22.546096271173454"  
+      scale="14" 
+      markers="{{markers}}" 
+      data-markers="{{markers}}" 
+      bindmarkertap='gotohere'
+      show-location >
+</map>
+</view>

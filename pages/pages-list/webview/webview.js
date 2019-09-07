@@ -4,7 +4,8 @@ Page({
   //页面的初始数据
   data: {
     //前端的h5链接地址
-    h5Url: 'https://game.flyh5.cn/resources/game/wechat/szq/webview/index.html'
+    // h5Url: 'https://game.flyh5.cn/resources/game/wechat/szq/webview/index.html'
+    h5Url: 'https://game.flyh5.cn/resources/game/sh_game/NissanDraw/main.html'
   },
   //生命周期函数--监听页面加载
   onLoad: function (options) {
@@ -26,14 +27,18 @@ Page({
     console.log("【从h5传到小程序的分享内容：】")
     console.log(e.detail.data[0])
     this.setData({ shareContent: e.detail.data[0] })
-    let _h5Url = `${this.data.h5Url}#ShareOk`
-    this.setData({ h5Url: _h5Url })
+    // let _h5Url = `${this.data.h5Url}#ShareOk`
+    // this.setData({ h5Url: _h5Url })
   },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage(options) {
     console.log("onShareAppMessage", options)
+    if (options.from == "menu") {
+      let _h5Url = `${this.data.h5Url}#ShareOk${new Date().getTime()}`
+      this.setData({ h5Url: _h5Url })
+    }
     return this.data.shareContent
   }
 })

@@ -1,6 +1,9 @@
 <!--index.wxml-->
 <view class="index body flex-cen">
-  <view class="ul">
-    <view wx:for="{{jumpList}}" wx:key="{{index}}" class="li" data-index="{{index}}" bindtap="jumps">{{item.name}}</view>
-  </view>
+  <scroll-view scroll-y>
+    <view class="ul">
+      <view wx:for="{{jumpList}}" wx:key="{{index}}" class="li" data-index="{{index}}" bindtap="jumps">{{item.name}}</view>
+    </view>
+  </scroll-view>
+  <controls isPause="{{isPause}}"></controls>
 </view>

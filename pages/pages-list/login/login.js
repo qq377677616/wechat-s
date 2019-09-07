@@ -2,53 +2,48 @@
 import api from '../../../utils/api/myRequests.js'
 import auth from '../../../utils/publics/authorization.js'
 import tool from '../../../utils/publics/tool.js'
+import backgroundAudio from '../../../utils/backgroundAudio.js'
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    loginNum: 0
+    loginNum: 0,
+    userInfo: {}
   },
-  //点击授权后
+  onLoad() {
+    this.setData({ userInfo: wx.getStorageSync("userInfo") })
+  },
+  onShow() {
+    this.setData({ isPause: backgroundAudio.audioState(getApp()) })//背景音乐相关
+  },
+  //授权
   getUserInfo(e) {
-    if (wx.getStorageSync("userId").openid) {
-      tool.alert("您已授权登录过")
+    tool.loading("登录中")
+    const userInfo = e.detail.userInfo;
+    console.log('【btn授权按钮获取用户信息】', userInfo)
+    if (userInfo) {
+      Object.assign(userInfo, wx.getStorageSync("userInfo"))
+      wx.setStorageSync("userInfo", userInfo)
+      this.setData({ userInfo: wx.getStorageSync("userInfo") })
+      tool.loading_h()
       return
-    }
-    console.log("拿到授权返回数据-->", e)
-    let myLogin = (userInfo) => {
-      //微信小程序登录
-      auth.login().then(res => {
-        console.log("微信登录后获取拿到code-->", res)
-        return res
+      //这里做上传头像昵称给后台操作
+      api.uploadUserInfo({
+        user_id: wx.getStorageSync("_login").user_id,
+        nickname: userInfo.nickName,
+        headimg: userInfo.avatarUrl
       }).then(res => {
-        //获取code后请求后端登录接口
-        return api.getOpenid({ code: res.code })
-      }).then(res => {
-        console.log("请求后端登录接口返回-->", res)
-        if (res.data.code === 1) {
-          let { data } = res.data
-          wx.setStorageSync("userInfo", userInfo)
-          wx.setStorageSync("userId", data.data)
-          tool.loading_h()
-          tool.alert("登录成功")
-        } else {
-          if (this.data.loginNum < 5) {
-            myLogin(userInfo)
-            this.data.loginNum++
-          } else {
-            tool.alert("登录失败，请稍后再试")
-            this.data.loginNum = 0
-          }
+        console.log('【上传头像昵称成功】')
+        tool.loading_h()
+        if (wx.getStorageSync("nextUrl")) {
+          tool.jump_nav(wx.getStorageSync("nextUrl"))
+          wx.removeStorageSync('nextUrl')
         }
       })
-    }
-    if (e.detail.userInfo) {
-      tool.loading('授权中')
-      let { userInfo } = e.detail
-      myLogin(userInfo)
     } else {
-      tool.showModal("授权提示", "为了更好的体验,请先进行授权", "好的,#A3271F", false)
+      tool.loading_h()
+      tool.showModal('授权', '为了更好的体验，请先授权')
     }
   }
 })

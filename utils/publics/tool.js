@@ -102,11 +102,11 @@ const previewImage = (urls, current) => {
     current: current
   })
 }
-//canvas绘图
+//canvas绘图生成海报图片
 const canvasImg = (options, callback) => {
   const ctx = wx.createCanvasContext(options.canvasId);
   ctx.setFillStyle('#fff')
-  ctx.rect(0, 0, 574, 1022)
+  ctx.rect(0, 0, options.canvasSize.split("*")[0], options.canvasSize.split("*")[1])
   ctx.fill()
   if (options.imgList.length > 0) {
     for (let i = 0; i < options.imgList.length; i++) {
@@ -122,6 +122,45 @@ const canvasImg = (options, callback) => {
     }
   }
   if (options.textList.length > 0) {
+    let _textList = options.textList
+    for (let i = 0; i < _textList.length; i++) {
+      let _wrap = _textList[i].wrap
+      let _h = _textList[i].textY
+      let _string = _textList[i].string
+      if (_textList[i].string.length > _textList[i].wrap) {
+        let _arrText = []
+        _arrText = [_textList[i].string]
+        let _x = 0
+        let _this = this
+        calcImgText(_x)
+        function calcImgText(x) {
+          for (let j = 0; j <= (_arrText[x].length / _textList[i].wrap); j++) {
+            if (_arrText[x].slice(j * _wrap, (j + 1) * _wrap) == '') { continue }
+            let _item = cloneObj(_textList[i])
+            _item.string = _arrText[x].slice(j * _wrap, (j + 1) * _wrap)
+            _item.textY = _h
+            _textList.push(_item)
+            _h += _item.lineHeight
+          }
+          if (_x < _arrText.length - 1) {
+            _x++
+            calcImgText(_x)
+          }
+        }
+        function cloneObj(obj) {
+          var newObj = {};
+          if (obj instanceof Array) {
+            newObj = [];
+          }
+          for (var key in obj) {
+            var val = obj[key];
+            newObj[key] = typeof val === 'object' ? cloneObj(val) : val;
+          }
+          return newObj;
+        }
+        _textList.splice(i, 1)
+      }
+    }
     for (let i = 0; i < options.textList.length; i++) {
       let _curText = options.textList[i]
       ctx.setFontSize(_curText.fontSize)

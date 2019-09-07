@@ -27,13 +27,21 @@
     "pages/pages-list/prize/index",
     "pages/pages-list/prize/disk/disk",
     "pages/pages-list/prize/disks/disks",
-    "pages/pages-list/prize/horse/horse"
+    "pages/pages-list/prize/horse/horse",
+    "pages/pages-list/map/index",
+    "pages/pages-list/map/qqmap/qqmap",
+    "components/gesture/gesture",
+    "pages/pages-list/websocket/websocket",
+    "pages/pages-list/ar/ar",
+    "pages/pages-list/img-code/img-code",
+    "pages/pages-list/computed-watch/computed-watch",
+    "pages/pages-list/ch-en/ch-en"
   ],
   "window": {
     "navigationBarTitleText": "小程序目录模板",
     "navigationBarBackgroundColor": "#038103",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#000",
@@ -61,5 +69,8 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-  }
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }
