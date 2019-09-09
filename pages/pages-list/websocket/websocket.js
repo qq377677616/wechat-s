@@ -23,7 +23,7 @@ Page({
    */
   data: {
     websocketUrl: 'wss://dev.flyh5.cn/yinian-answer/websocket/',//websocket地址
-    peopleNum: 6,//几v几
+    peopleNum: 1,//几v几
     my: '张三丰',//我的昵称
     blueList:[],//已方队伍
     redList: [],//对方队伍
