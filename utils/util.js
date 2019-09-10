@@ -37,48 +37,18 @@ const distanceTime = (time) => {
   }
   return _str
 }
-/*当前是几月 */
-const sameMonth = () => {
-  let _month = new Date().getMonth() + 1
-  let _months
-  switch (_month) {
-    case 1:
-      _months = { ch: '一月', en: 'January ' }
-      break
-    case 2:
-      _months = { ch: '二月', en: 'February ' }
-      break
-    case 3:
-      _months = { ch: '三月', en: 'March ' }
-      break
-    case 4:
-      _months = { ch: '四月', en: 'April ' }
-      break
-    case 5:
-      _months = { ch: '五月', en: 'May ' }
-      break
-    case 6:
-      _months = { ch: '六月', en: 'June ' }
-      break
-    case 7:
-      _months = { ch: '七月', en: 'July ' }
-      break
-    case 8:
-      _months = { ch: '八月', en: 'August ' }
-      break
-    case 9:
-      _months = { ch: '九月', en: 'September ' }
-      break
-    case 10:
-      _months = { ch: '十月', en: 'October ' }
-      break
-    case 11:
-      _months = { ch: '十一月', en: 'November ' }
-      break
-    case 12:
-      _months = { ch: '十二月', en: 'December ' }
-  }
-  return _months
+/*倒计时*/
+const minutesAndSeconds = (time, symbol) => {
+  let _d, _h, _m, _s
+  _d = parseInt(time / 86400)
+  _h = parseInt(time / 3600) - _d * 24
+  _m = parseInt(time / 60) - _d * 1440 - _h * 60
+  _s = parseInt(time) - _d * 86400 - _h * 3600 - _m * 60
+  _d < 10 && (_d = '0' + _d)
+  _h < 10 && (_h = '0' + _h)
+  _m < 10 && (_m = '0' + _m)
+  _s < 10 && (_s = '0' + _s)
+  return _d + (symbol || '天') + _h + (symbol || '时') + _m + (symbol || '分') + _s + (symbol ? '' : '秒')
 }
 /*个位数自动在前面添加0*/
 const formatNumber = n => {
@@ -273,7 +243,7 @@ const regexp = (opation, sensitiveWords, lang) => {
 module.exports = {
   formatTime,//当前时间、时间戳(秒)、毫秒转换
   distanceTime,//某个时间距离当前时间转换
-  sameMonth,
+  minutesAndSeconds,//倒计时
   decimal_place,//保留固定小数不足添0
   getImgLocalPath,//获取图片本地路径
   shake_one_shake,//摇一摇

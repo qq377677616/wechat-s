@@ -4,6 +4,7 @@ import mta from '../../utils/mta_analysis.js'
 import tool from '../../utils/publics/tool.js'
 import auth from'../../utils/publics/authorization.js'
 import backgroundAudio from '../../utils/backgroundAudio.js'
+import utils from '../../utils/util.js'
 Page({
   data: {
     jumpList: [
