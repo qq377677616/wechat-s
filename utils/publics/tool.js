@@ -43,6 +43,22 @@ const showModal = (title = "确认", content = "您确认进行此操作？", co
     })
   })
 }
+//小程序信息
+const getWxConfig = () => {
+  return new Promise((resolve) => {
+    resolve(__wxConfig)
+  })
+}
+//获取手机系统信息
+const getSystemInfo = () => {
+  return new Promise((resolve, reject) => {
+    wx.getSystemInfo({
+      success(res) {
+        resolve(res)
+      }
+    })
+  })
+}
 //获取dom节点
 const getDom = ele => {
   return new Promise((resolve, reject) => {
@@ -62,16 +78,6 @@ const videoPlay = (ele, isFullScreen = true) => {
   // if (isFullScreen) {
   //   videoContext.requestFullScreen({ direction: 0 })
   // }
-}
-//获取手机系统信息
-const getSystemInfo = () => {
-  return new Promise((resolve, reject) => {
-    wx.getSystemInfo({
-      success(res) {
-        resolve(res)
-      }
-    })
-  })
 }
 //可返回跳转
 const jump_nav = (url) => {
@@ -367,9 +373,10 @@ module.exports = {
   showModal,
   loading,
   loading_h,
+  getWxConfig,
+  getSystemInfo,
   getDom,
   videoPlay,
-  getSystemInfo,
   jump_nav,
   jump_red,
   jump_rel,

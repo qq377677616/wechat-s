@@ -30,16 +30,16 @@ Page({
       { name: "导航栏和tabBar", url: "/pages/pages-list/custom/custom"},
       { name: "3d轮播", url: "/pages/pages-list/swiper3d/swiper3d"},
       { name: "滚动淡出", url: "/pages/pages-list/scroll-show/scroll-show"},
-      { name: "测试", url: "/pages/pages-list/test/test"},
+      // { name: "测试", url: "/pages/pages-list/test/test"},
       { name: "未完待续...", url: ""}
     ]
   },
   onLoad: function () {
+    mta.Page.init()//腾讯统计
     login.login().then(res => {
       console.log("【静默登录】", res)
       //在这里做页面初始化请求操作，可保证本地缓存中有用户的openid/userId
     })
-    mta.Page.init()//腾讯统计
   },
   onShow() {
     this.setData({ isPause: backgroundAudio.audioState(getApp()) })//背景音乐相关
