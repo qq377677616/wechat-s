@@ -1,19 +1,18 @@
-/*当前时间、时间戳(秒)、毫秒转换*/
-const formatTime = (date, types, connect = '/', connect2 = ' ', connect3 = ':') => {
-  if (types === 's') {
-    date = new Date(date * 1000)
-  } else if (types === 'ms') {
-    date = new Date(date);
-  } else {
-    date = new Date();
+/*倒计时(传秒数)*/
+const minutesAndSeconds = (time, symbols) => {
+  let _d, _h, _m, _s
+  _d = parseInt(time / 86400)
+  _h = parseInt(time / 3600) - _d * 24
+  _m = parseInt(time / 60) - _d * 1440 - _h * 60
+  _s = parseInt(time) - _d * 86400 - _h * 3600 - _m * 60
+  _d < 10 ? (_d = '0' + _d) : _d = String(_d)
+  _h < 10 ? (_h = '0' + _h) : _h = String(_h)
+  _m < 10 ? (_m = '0' + _m) : _m = String(_m)
+  _s < 10 ? (_s = '0' + _s) : _s = String(_s)
+  return {
+    tiem: _d + (symbols || '天') + _h + (symbols || '时') + _m + (symbols || '分') + _s + (symbols ? '' : '秒'),
+    tiems: { d: _d, h: _h, m: _m, s: _s }
   }
-  let year = date.getFullYear()
-  let month = date.getMonth() + 1
-  let day = date.getDate()
-  let hour = date.getHours()
-  let minute = date.getMinutes()
-  let second = date.getSeconds()
-  return [year, month, day].map(formatNumber).join(connect) + connect2 + [hour, minute, second].map(formatNumber).join(connect3)
 }
 /*某个时间距离当前时间转换*/
 const distanceTime = (time) => {
@@ -36,19 +35,6 @@ const distanceTime = (time) => {
     _str = { ch: _mon + "月前", en: _mon + ' months ago' }
   }
   return _str
-}
-/*倒计时*/
-const minutesAndSeconds = (time, symbol) => {
-  let _d, _h, _m, _s
-  _d = parseInt(time / 86400)
-  _h = parseInt(time / 3600) - _d * 24
-  _m = parseInt(time / 60) - _d * 1440 - _h * 60
-  _s = parseInt(time) - _d * 86400 - _h * 3600 - _m * 60
-  _d < 10 && (_d = '0' + _d)
-  _h < 10 && (_h = '0' + _h)
-  _m < 10 && (_m = '0' + _m)
-  _s < 10 && (_s = '0' + _s)
-  return _d + (symbol || '天') + _h + (symbol || '时') + _m + (symbol || '分') + _s + (symbol ? '' : '秒')
 }
 /*个位数自动在前面添加0*/
 const formatNumber = n => {
@@ -83,35 +69,6 @@ const decimal_place = (x, n = 2, math = 'round') => {
     s_x += '0'
   }
   return s_x
-}
-/*获取图片本地路径*/
-const getImgLocalPath = imgUrl => {
-  return new Promise(resolve => {
-    wx.getImageInfo({
-      src: imgUrl,
-      success: function (res) {
-        resolve(res.path)
-      }
-    })
-  })
-}
-//把canvas转换成本地图片路径
-const canvasToTempImage = (canvasId, w, h, x = 0, y = 0) => {
-  return new Promise((resolve, reject) => {
-    wx.canvasToTempFilePath({
-      canvasId,   // 这里canvasId即之前创建的canvas-id
-      x: x,
-      y: y,
-      width: w,
-      height: h,
-      success: function (res) {
-        resolve(res.tempFilePath)
-      },
-      fail: function (res) {
-        reject(res);
-      }
-    })
-  })
 }
 /*摇一摇1*/
 const shake_one_shake = (isOpen, shakeNum = 2, interval = 2000, audio, callBack) => { // 摇一摇方法封装
@@ -241,13 +198,10 @@ const regexp = (opation, sensitiveWords, lang) => {
   })
 }
 module.exports = {
-  formatTime,//当前时间、时间戳(秒)、毫秒转换
   distanceTime,//某个时间距离当前时间转换
   minutesAndSeconds,//倒计时
   decimal_place,//保留固定小数不足添0
-  getImgLocalPath,//获取图片本地路径
   shake_one_shake,//摇一摇
   shake_one_shake2,//摇一摇2
-  regexp: regexp,
-  canvasToTempImage
+  regexp: regexp
 }

@@ -1,10 +1,10 @@
 // pages/pages-list/barcode/barcode.js
 import { toBarcode, toQrcode } from '../../../utils/code/codes.js'
-import { canvasToTempImage } from '../../../utils/util'
+import { canvasToTempImage } from '../../../utils/publics/tool'
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
    */
   data: {
     imagePath: '',

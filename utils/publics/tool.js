@@ -45,13 +45,13 @@ const showModal = (title = "确认", content = "您确认进行此操作？", co
 }
 //获取dom节点
 const getDom = ele => {
-  const query = wx.createSelectorQuery()
-  query.select(ele).boundingClientRect()
-  query.selectViewport().scrollOffset()
-  query.exec(function (res) {
-    return res
-    res[0].top       // #the-id节点的上边界坐标
-    res[1].scrollTop // 显示区域的竖直滚动位置
+  return new Promise((resolve, reject) => {
+    const query = wx.createSelectorQuery()
+    query.select(ele).boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(res => {
+      resolve(res)
+    })
   })
 }
 //播放视频
@@ -64,7 +64,7 @@ const videoPlay = (ele, isFullScreen = true) => {
   // }
 }
 //获取手机系统信息
-const getSystem = () => {
+const getSystemInfo = () => {
   return new Promise((resolve, reject) => {
     wx.getSystemInfo({
       success(res) {
@@ -82,6 +82,12 @@ const jump_nav = (url) => {
 //不可返回跳转
 const jump_red = (url) => {
   wx.redirectTo({
+    url: url
+  })
+}
+//清除页面栈跳转
+const jump_rel = (url) => {
+  wx.reLaunch({
     url: url
   })
 }
@@ -104,93 +110,239 @@ const previewImage = (urls, current) => {
 }
 //canvas绘图生成海报图片
 const canvasImg = (options, callback) => {
-  const ctx = wx.createCanvasContext(options.canvasId);
-  ctx.setFillStyle('#fff')
-  ctx.rect(0, 0, options.canvasSize.split("*")[0], options.canvasSize.split("*")[1])
-  ctx.fill()
-  if (options.imgList.length > 0) {
-    for (let i = 0; i < options.imgList.length; i++) {
-      let _curimg = options.imgList[i]
-      if (_curimg.isRadius) {
-        ctx.save()
-        ctx.beginPath()
-        ctx.arc(_curimg.imgX + _curimg.imgW / 2, _curimg.imgY + _curimg.imgW / 2, _curimg.imgW / 2, 0, 2 * Math.PI)
-        ctx.clip()
-      }
-      ctx.drawImage(_curimg.url, _curimg.imgX, _curimg.imgY, _curimg.imgW, _curimg.imgH)
-      ctx.restore()
-    }
-  }
-  if (options.textList.length > 0) {
-    let _textList = options.textList
-    for (let i = 0; i < _textList.length; i++) {
-      let _wrap = _textList[i].wrap
-      let _h = _textList[i].textY
-      let _string = _textList[i].string
-      if (_textList[i].string.length > _textList[i].wrap) {
-        let _arrText = []
-        _arrText = [_textList[i].string]
-        let _x = 0
-        let _this = this
-        calcImgText(_x)
-        function calcImgText(x) {
-          for (let j = 0; j <= (_arrText[x].length / _textList[i].wrap); j++) {
-            if (_arrText[x].slice(j * _wrap, (j + 1) * _wrap) == '') { continue }
-            let _item = cloneObj(_textList[i])
-            _item.string = _arrText[x].slice(j * _wrap, (j + 1) * _wrap)
-            _item.textY = _h
-            _textList.push(_item)
-            _h += _item.lineHeight
+  return new Promise((resolve, reject) => {
+    const ctx = wx.createCanvasContext(options.canvasId);
+    ctx.setFillStyle('#fff')
+    ctx.rect(0, 0, options.canvasSize.split("*")[0], options.canvasSize.split("*")[1])
+    ctx.fill()
+    if (options.imgList && options.imgList.length > 0) {
+      let _allNum = options.imgList.length || 0
+      let _curNum = 0
+      for (let i = 0; i < _allNum; i++) {
+        let _curimg = options.imgList[i]
+        getImageInfo(_curimg.url).then(res => {
+          console.log(res)
+          _curNum++
+          _curimg.url = res.path
+          _curimg.imgW = res.width
+          _curimg.imgH = res.height
+          if (_curimg.isRadius) {
+            ctx.save()
+            ctx.beginPath()
+            ctx.arc(_curimg.imgX + (_curimg.drawW || _curimg.imgW) / 2, _curimg.imgY + (_curimg.drawH || _curimg.imgH) / 2, (_curimg.drawW || _curimg.imgW) / 2, 0, 2 * Math.PI)
+            ctx.clip()
           }
-          if (_x < _arrText.length - 1) {
-            _x++
-            calcImgText(_x)
+          let _scale = 1
+          let _drawW = _curimg.imgW
+          let _drawH = _curimg.imgH
+          if (_curimg.drawW) {
+            _scale = Math.min(_curimg.imgW / _curimg.drawW, _curimg.imgH / _curimg.drawH)
+            _drawW = _curimg.drawW * _scale
+            _drawH = _curimg.drawH * _scale
           }
-        }
-        function cloneObj(obj) {
-          var newObj = {};
-          if (obj instanceof Array) {
-            newObj = [];
-          }
-          for (var key in obj) {
-            var val = obj[key];
-            newObj[key] = typeof val === 'object' ? cloneObj(val) : val;
-          }
-          return newObj;
-        }
-        _textList.splice(i, 1)
-      }
-    }
-    for (let i = 0; i < options.textList.length; i++) {
-      let _curText = options.textList[i]
-      ctx.setFontSize(_curText.fontSize)
-      ctx.setFillStyle(_curText.color)
-      ctx.setTextAlign('left')
-      ctx.setTextBaseline('top')
-      ctx.fillText(_curText.string, _curText.textX, _curText.textY)
-      if (_curText.bold) {
-        ctx.fillText(_curText.string, _curText.textX, _curText.textY - 0.5)
-        ctx.fillText(_curText.string, _curText.textX - 0.5, _curText.textY)
-      }
-      ctx.fillText(_curText.string, _curText.textX, _curText.textY)
-      if (_curText.bold) {
-        ctx.fillText(_curText.string, _curText.textX, _curText.textY + 0.5)
-        ctx.fillText(_curText.string, _curText.textX + 0.5, _curText.textY)
-      }
-    }
-    //ctx.draw(true)
-  }
-  ctx.draw(true, () => {
-    if (callback) {
-      setTimeout(() => {
-        wx.canvasToTempFilePath({
-          canvasId: options.canvasId,
-          success(res) {
-            callback(res.tempFilePath)
+          ctx.drawImage(_curimg.url, (_curimg.imgW - _drawW) / 2, (_curimg.imgH - _drawH) / 2, _drawW, _drawH, _curimg.imgX, _curimg.imgY, _curimg.drawW || _curimg.imgW, _curimg.drawH || _curimg.imgH)
+          ctx.restore()
+          if (_curNum >= _allNum) {
+            drawNext()
           }
         })
-      }, 100)
+      }
+    } else {
+      drawNext()
     }
+    function drawNext() {
+      if (options.textList && options.textList.length > 0) {
+        let _textList = options.textList
+        for (let i = 0; i < _textList.length; i++) {
+          let _wrap = _textList[i].wrap
+          let _h = _textList[i].textY
+          let _string = _textList[i].string
+          if (_textList[i].string.length > _textList[i].wrap) {
+            let _arrText = []
+            _arrText = [_textList[i].string]
+            let _x = 0
+            let _this = this
+            calcImgText(_x)
+            function calcImgText(x) {
+              for (let j = 0; j <= (_arrText[x].length / _textList[i].wrap); j++) {
+                if (_arrText[x].slice(j * _wrap, (j + 1) * _wrap) == '') { continue }
+                let _item = cloneObj(_textList[i])
+                _item.string = _arrText[x].slice(j * _wrap, (j + 1) * _wrap)
+                _item.textY = _h
+                _textList.push(_item)
+                _h += _item.lineHeight
+              }
+              if (_x < _arrText.length - 1) {
+                _x++
+                calcImgText(_x)
+              }
+            }
+            function cloneObj(obj) {
+              var newObj = {};
+              if (obj instanceof Array) {
+                newObj = [];
+              }
+              for (var key in obj) {
+                var val = obj[key];
+                newObj[key] = typeof val === 'object' ? cloneObj(val) : val;
+              }
+              return newObj;
+            }
+            _textList.splice(i, 1)
+          }
+        }
+        for (let i = 0; i < options.textList.length; i++) {
+          let _curText = options.textList[i]
+          ctx.setFontSize(_curText.fontSize)
+          ctx.setFillStyle(_curText.color)
+          ctx.setTextAlign('left')
+          ctx.setTextBaseline('top')
+          ctx.fillText(_curText.string, _curText.textX, _curText.textY)
+          if (_curText.bold) {
+            ctx.fillText(_curText.string, _curText.textX, _curText.textY - 0.5)
+            ctx.fillText(_curText.string, _curText.textX - 0.5, _curText.textY)
+          }
+          ctx.fillText(_curText.string, _curText.textX, _curText.textY)
+          if (_curText.bold) {
+            ctx.fillText(_curText.string, _curText.textX, _curText.textY + 0.5)
+            ctx.fillText(_curText.string, _curText.textX + 0.5, _curText.textY)
+          }
+        }
+        //ctx.draw(true)
+      }
+      ctx.draw(true, () => {
+        setTimeout(() => {
+          canvasToTempImage(options.canvasId).then(res => {
+            console.log("res", res)
+          })
+          wx.canvasToTempFilePath({
+            canvasId: options.canvasId,
+            success(res) {
+              resolve(res.tempFilePath)
+            }
+          })
+        }, 100)
+      })
+    }
+  })
+}
+// const canvasImg = (options, callback) => {
+//   const ctx = wx.createCanvasContext(options.canvasId);
+//   ctx.setFillStyle('#fff')
+//   ctx.rect(0, 0, options.canvasSize.split("*")[0], options.canvasSize.split("*")[1])
+//   ctx.fill()
+//   if (options.imgList.length > 0) {
+//     for (let i = 0; i < options.imgList.length; i++) {
+//       let _curimg = options.imgList[i]
+//       if (_curimg.isRadius) {
+//         ctx.save()
+//         ctx.beginPath()
+//         ctx.arc(_curimg.imgX + _curimg.imgW / 2, _curimg.imgY + _curimg.imgW / 2, _curimg.imgW / 2, 0, 2 * Math.PI)
+//         ctx.clip()
+//       }
+//       ctx.drawImage(_curimg.url, _curimg.imgX, _curimg.imgY, _curimg.imgW, _curimg.imgH)
+//       ctx.restore()
+//     }
+//   }
+//   if (options.textList.length > 0) {
+//     let _textList = options.textList
+//     for (let i = 0; i < _textList.length; i++) {
+//       let _wrap = _textList[i].wrap
+//       let _h = _textList[i].textY
+//       let _string = _textList[i].string
+//       if (_textList[i].string.length > _textList[i].wrap) {
+//         let _arrText = []
+//         _arrText = [_textList[i].string]
+//         let _x = 0
+//         let _this = this
+//         calcImgText(_x)
+//         function calcImgText(x) {
+//           for (let j = 0; j <= (_arrText[x].length / _textList[i].wrap); j++) {
+//             if (_arrText[x].slice(j * _wrap, (j + 1) * _wrap) == '') { continue }
+//             let _item = cloneObj(_textList[i])
+//             _item.string = _arrText[x].slice(j * _wrap, (j + 1) * _wrap)
+//             _item.textY = _h
+//             _textList.push(_item)
+//             _h += _item.lineHeight
+//           }
+//           if (_x < _arrText.length - 1) {
+//             _x++
+//             calcImgText(_x)
+//           }
+//         }
+//         function cloneObj(obj) {
+//           var newObj = {};
+//           if (obj instanceof Array) {
+//             newObj = [];
+//           }
+//           for (var key in obj) {
+//             var val = obj[key];
+//             newObj[key] = typeof val === 'object' ? cloneObj(val) : val;
+//           }
+//           return newObj;
+//         }
+//         _textList.splice(i, 1)
+//       }
+//     }
+//     for (let i = 0; i < options.textList.length; i++) {
+//       let _curText = options.textList[i]
+//       ctx.setFontSize(_curText.fontSize)
+//       ctx.setFillStyle(_curText.color)
+//       ctx.setTextAlign('left')
+//       ctx.setTextBaseline('top')
+//       ctx.fillText(_curText.string, _curText.textX, _curText.textY)
+//       if (_curText.bold) {
+//         ctx.fillText(_curText.string, _curText.textX, _curText.textY - 0.5)
+//         ctx.fillText(_curText.string, _curText.textX - 0.5, _curText.textY)
+//       }
+//       ctx.fillText(_curText.string, _curText.textX, _curText.textY)
+//       if (_curText.bold) {
+//         ctx.fillText(_curText.string, _curText.textX, _curText.textY + 0.5)
+//         ctx.fillText(_curText.string, _curText.textX + 0.5, _curText.textY)
+//       }
+//     }
+//     //ctx.draw(true)
+//   }
+//   ctx.draw(true, () => {
+//     if (callback) {
+//       setTimeout(() => {
+//         wx.canvasToTempFilePath({
+//           canvasId: options.canvasId,
+//           success(res) {
+//             callback(res.tempFilePath)
+//           }
+//         })
+//       }, 100)
+//     }
+//   })
+// }
+//获取图片信息
+const getImageInfo = imgUrl => {
+  return new Promise(resolve => {
+    wx.getImageInfo({
+      src: imgUrl,
+      success(res) {
+        resolve(res)
+      }
+    })
+  })
+}
+//把canvas转换成本地图片路径
+const canvasToTempImage = (canvasId, w, h, x = 0, y = 0) => {
+  return new Promise((resolve, reject) => {
+    wx.canvasToTempFilePath({
+      canvasId,   // 这里canvasId即之前创建的canvas-id
+      x: x,
+      y: y,
+      width: w,
+      height: h,
+      success: function (res) {
+        resolve(res.tempFilePath)
+      },
+      fail: function (res) {
+        reject(res);
+      }
+    })
   })
 }
 //获取定位
@@ -217,12 +369,15 @@ module.exports = {
   loading_h,
   getDom,
   videoPlay,
-  getSystem,
+  getSystemInfo,
   jump_nav,
   jump_red,
+  jump_rel,
   jump_swi,
   jump_back,
   previewImage,
   canvasImg,
+  getImageInfo,
+  canvasToTempImage,
   getPosition
 }

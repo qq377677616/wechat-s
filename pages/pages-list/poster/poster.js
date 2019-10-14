@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showModalOption: { 
+    showModalOption: {  
       isShow: false,
       type: 0,
       title: "访问手机相册",
@@ -17,15 +17,25 @@ Page({
       confirmText: "确定",
       color_confirm: "#0BB20C"
     },
-    posterImgUrl: ''
+    posterImgUrl: '',
+    isIos: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ userInfo: wx.getStorageSync("userInfo")})
-    this.getSharePoster()
+    this.setData({ userInfo: wx.getStorageSync("userInfo") || {} })
+    if (this.data.userInfo.nickName) { 
+      this.getSharePoster()
+    } else {
+      tool.showModal("未授权", "系统检测到您未授权，请先去授权再来生成海报", "去授权,red", false).then(res => {
+        tool.jump_back()
+      })
+    }
+    tool.getSystemInfo().then(res => {
+      this.setData({ isIos: res.model.includes("iPhone") ? 1 : 2})
+    })
   },
 
   //获取分享海报
@@ -38,35 +48,26 @@ Page({
         tool.alert("海报生成失败，请稍后再试")
       }
     }, 15000)
-    console.log("_this.data.userInfo.avatarUrl", _this.data.userInfo.avatarUrl)
-    Promise.all([
-      util.getImgLocalPath("http://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/poster.jpg"),
-      util.getImgLocalPath(_this.data.userInfo.avatarUrl),
-      util.getImgLocalPath("http://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/code.jpg")]).then(res => {
-        tool.canvasImg({
-          canvasId: 'myCanvas',
-          canvasSize: '574*1022',
-          imgList: [
-            { url: res[0], imgW: 574, imgH: 726, imgX: 0, imgY: 0 },
-            { url: res[1], imgW: 78, imgH: 78, imgX: 26, imgY: 788, isRadius: true },
-            { url: res[2], imgW: 91, imgH: 91, imgX: 452, imgY: 876 },
-          ],
-          textList: [
-            { string: this.data.userInfo.nickName, color: '#373737', fontSize: '23', fontFamily: 'Arial', bold: false, textX: 117, textY: 797 },
-            { string: '我正在参与投票活动，这是我的作品我正在参与投票活动，这是我的作品我正在参与投票活动。', color: '#a0a3a7', fontSize: '20', fontFamily: 'Arial', bold: false, textX: 116, textY: 833, wrap: 10, lineHeight: 30 },
-            { string: '长按识别二维码，马上进入体验', color: '#9fa0a0', fontSize: '13', fontFamily: 'Arial', bold: false, textX: 364, textY: 977 }
-          ]
-        }, res => {
-          tool.loading_h();
-          _this.setData({
-            isState: true,
-            posterImgUrl: res,
-            canvasHidden: true
-          })
-          //_this.savePhoto()
-        })
+    tool.canvasImg({
+      canvasId: 'myCanvas',
+      canvasSize: '574*1022',
+      imgList: [
+        { url: "https://game.flyh5.cn/resources/game/wechat/szq/images/poster.jpg", drawW: 574, drawH: 726, imgX: 0, imgY: 0 },
+        { url: _this.data.userInfo.avatarUrl, drawW: 78, drawH: 78, imgX: 26, imgY: 788, isRadius: true },
+        { url: "https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/district/code.jpg", drawW: 91, drawH: 91, imgX: 452, imgY: 876 }
+      ],
+      textList: [
+        { string: this.data.userInfo.nickName, color: '#373737', fontSize: '23', fontFamily: 'Arial', bold: false, textX: 117, textY: 797 },
+        { string: '我正在参与投票活动，这是我的作品我正在参与投票活动，这是我的作品我正在参与投票活动。', color: '#a0a3a7', fontSize: '20', fontFamily: 'Arial', bold: false, textX: 116, textY: 833, wrap: 10, lineHeight: 30 },
+        { string: '长按识别二维码，马上进入体验', color: '#9fa0a0', fontSize: '13', fontFamily: 'Arial', bold: false, textX: 364, textY: 977 }
+      ]
+    }).then(res => {
+      tool.loading_h()
+      _this.setData({
+        isPosterOk: true,
+        posterImgUrl: res
       })
-
+    })
   },
   //保存到相册
   savePhoto() {

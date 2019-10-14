@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/pages-list/login/login",
+    "pages/pages-list/authorize/authorize",
     "pages/pages-list/get-phone/get-phone",
     "pages/pages-list/webview/webview",
     "pages/pages-list/location/location",
@@ -35,7 +35,12 @@
     "pages/pages-list/ar/ar",
     "pages/pages-list/img-code/img-code",
     "pages/pages-list/computed-watch/computed-watch",
-    "pages/pages-list/ch-en/ch-en"
+    "pages/pages-list/ch-en/ch-en",
+    "pages/pages-list/sequence/sequence",
+    "pages/pages-list/custom/custom",
+    "pages/pages-list/swiper3d/swiper3d",
+    "pages/pages-list/test/test",
+    "pages/pages-list/scroll-show/scroll-show"
   ],
   "window": {
     "navigationBarTitleText": "小程序目录模板",
@@ -43,27 +48,9 @@
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": false
   },
-  "tabBar": {
-    "color": "#000",
-    "selectedColor": "#038103",
-    "backgroundColor": "#fff",
-    "borderStyle": "black",
-    "position": "bottom",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "assets/images/tabBar/tabBar_01.png",
-        "selectedIconPath": "assets/images/tabBar/tabBar_01s.png"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "我的",
-        "iconPath": "assets/images/tabBar/tabBar_02.png",
-        "selectedIconPath": "assets/images/tabBar/tabBar_02s.png"
-      }
-    ]
-  },
+  "navigateToMiniProgramAppIdList": [
+    "wx5f891ae8337b8324"
+  ],
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {

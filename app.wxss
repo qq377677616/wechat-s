@@ -1,5 +1,6 @@
 /**app.wxss**/
-@import "common/css/publics.wxss"
+@import "common/css/publics.wxss";
+@import "common/css/font-icon.wxss";
 .body,.container{height:100vh;}
 .titles{padding:20rpx 40rpx;border:1rpx solid #333;border-radius: 10rpx;}
 .titles2{margin:20rpx 0;border:1rpx solid #666;padding:10rpx 0;width:240rpx;text-align: center;}

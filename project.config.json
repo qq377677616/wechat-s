@@ -23,7 +23,7 @@
 		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.7",
+	"libVersion": "2.8.3",
 	"appid": "wx9cb717d8151d8486",
 	"projectname": "%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%88%9D%E5%A7%8B%E6%A8%A1%E6%9D%BF%E7%9B%AE%E5%BD%95",
 	"debugOptions": {
@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 17,
 			"list": [
 				{
 					"id": 0,
@@ -156,6 +156,27 @@
 					"pathName": "pages/pages-list/ch-en/ch-en",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "自定义nav和tabbar",
+					"pathName": "pages/pages-list/custom/custom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "3d轮播",
+					"pathName": "pages/pages-list/swiper3d/swiper3d",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "测试页面",
+					"pathName": "pages/pages-list/test/test",
+					"query": "",
+					"scene": 1011
 				}
 			]
 		}
