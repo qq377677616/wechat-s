@@ -30,7 +30,7 @@ Page({
       { name: "导航栏和tabBar", url: "/pages/pages-list/custom/custom"},
       { name: "3d轮播", url: "/pages/pages-list/swiper3d/swiper3d"},
       { name: "滚动淡出", url: "/pages/pages-list/scroll-show/scroll-show"},
-      // { name: "测试", url: "/pages/pages-list/test/test"},
+      { name: "测试", url: "/pages/pages-list/test/test"},
       { name: "未完待续...", url: ""}
     ]
   },
