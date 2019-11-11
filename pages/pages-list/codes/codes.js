@@ -14,7 +14,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) { 
     const code = '20190716';
     const code2 = '这是一些中文';
     toBarcode('barcode', code, 320, 70)

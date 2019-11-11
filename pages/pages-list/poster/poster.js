@@ -47,7 +47,7 @@ Page({
         tool.loading_h()
         tool.alert("海报生成失败，请稍后再试")
       }
-    }, 15000)
+    }, 15000) 
     tool.canvasImg({
       canvasId: 'myCanvas',
       canvasSize: '574*1022',
@@ -62,6 +62,7 @@ Page({
         { string: '长按识别二维码，马上进入体验', color: '#9fa0a0', fontSize: '13', fontFamily: 'Arial', bold: false, textX: 364, textY: 977 }
       ]
     }).then(res => {
+      console.log("res", res)
       tool.loading_h()
       _this.setData({
         isPosterOk: true,

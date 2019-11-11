@@ -1,5 +1,6 @@
 // pages/receive_card/receive_card.js
 import tool from '../../../utils/publics/tool.js'
+import map from '../../../utils/map/map.js'
 import auth from '../../../utils/publics/authorization.js'
 Page({
 
@@ -39,7 +40,7 @@ Page({
   },
   getPosition() {
     tool.loading("自动定位中")
-    tool.getPosition().then(res => {
+    map.getPosition2().then(res => {
       console.log("定位详细信息", res)
       let _address_component = res.result.address_component
       console.log("经度---->", res.result.location.lng)

@@ -219,13 +219,7 @@ const canvasImg = (options, callback) => {
       ctx.draw(true, () => {
         setTimeout(() => {
           canvasToTempImage(options.canvasId).then(res => {
-            console.log("res", res)
-          })
-          wx.canvasToTempFilePath({
-            canvasId: options.canvasId,
-            success(res) {
-              resolve(res.tempFilePath)
-            }
+            resolve(res)
           })
         }, 100)
       })
@@ -315,7 +309,7 @@ const canvasImg = (options, callback) => {
 //         wx.canvasToTempFilePath({
 //           canvasId: options.canvasId,
 //           success(res) {
-//             callback(res.tempFilePath)
+//             callback(res.tempfilePathArr)
 //           }
 //         })
 //       }, 100)
@@ -337,35 +331,80 @@ const getImageInfo = imgUrl => {
 const canvasToTempImage = (canvasId, w, h, x = 0, y = 0) => {
   return new Promise((resolve, reject) => {
     wx.canvasToTempFilePath({
-      canvasId,   // 这里canvasId即之前创建的canvas-id
+      canvasId,
       x: x,
       y: y,
       width: w,
       height: h,
-      success: function (res) {
+      success(res) {
         resolve(res.tempFilePath)
       },
-      fail: function (res) {
+      fail(res) {
         reject(res);
       }
     })
   })
 }
-//获取定位
-const getPosition = () => {
-  return new Promise((resolve, reject) => {
-    let qqmapsdk = new QQMapWX({ key: 'GW3BZ-NMN6J-JSEFT-FTC6R-F7DA3-Z3FVJ' })
-    qqmapsdk.reverseGeocoder({
-      success: res => {//成功后的回调
+
+//选择文件
+const chooseMessageFile = (count = 1) => {
+  return new Promise(resolve => {
+    wx.chooseMessageFile({
+      count: count,
+      type: 'file',
+      success(res) {
         resolve(res)
-      },
-      fail: function (err) {
-        reject(err)
-      },
-      complete: function (res) {
-        //console.log(res)
       }
     })
+
+  })
+}
+/*上传文件*/
+const uploadFiles = (filePathArr, url) => {
+  let imgList = []
+  let _ulloadNum = 0
+  return new Promise((resolve, reject) => {
+    let eachUpload = () => {
+      if (_ulloadNum >= filePathArr.length) {
+        resolve(imgList)
+        return
+      }
+      let uploadTask = wx.uploadFile({
+        url: url,
+        filePath: filePathArr[_ulloadNum],
+        name: 'file',
+        success: function (res) {
+          imgList.push(JSON.parse(res.data).data.src)
+          _ulloadNum++
+          eachUpload()
+        },
+        fail(err){
+          reject(err)
+        }
+      })
+      // uploadTask.onProgressUpdate((res) => {
+      //   console.log('上传进度', res.progress)
+      //   console.log('已经上传的数据长度', res.totalBytesSent)
+      //   console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+      // })
+    }
+    eachUpload()
+  })
+}
+//查看文件
+const openDocument = filePath => {
+  console.log("filePath", filePath)
+  wx.downloadFile({
+    // 示例 url，并非真实存在
+    url: filePath,
+    success(res) {
+      wx.openDocument({
+        filePath: res.tempFilePath,
+        success(res) {
+          console.log('打开文档成功')
+        }
+      })
+    }
   })
 }
 module.exports = {
@@ -386,5 +425,7 @@ module.exports = {
   canvasImg,
   getImageInfo,
   canvasToTempImage,
-  getPosition
+  chooseMessageFile,
+  uploadFiles,
+  openDocument
 }

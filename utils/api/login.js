@@ -8,7 +8,7 @@ const login = () => {
     let _userInfo = wx.getStorageSync("userInfo") || {}
     if (_userInfo.openid) {
       resolve(_userInfo)
-      return
+      return 
     }
     tool.loading("")
     auth.login().then(res => {

@@ -30,6 +30,9 @@ Page({
       { name: "导航栏和tabBar", url: "/pages/pages-list/custom/custom"},
       { name: "3d轮播", url: "/pages/pages-list/swiper3d/swiper3d"},
       { name: "滚动淡出", url: "/pages/pages-list/scroll-show/scroll-show"},
+      { name: "电子手写签名", url: "/pages/pages-list/handwriting/handwriting"},
+      { name: "机器人", url: "/pages/pages-list/robot/robot"},
+      { name: "全景", url: "/pages/pages-list/panorama/panorama"},
       // { name: "测试", url: "/pages/pages-list/test/test"},
       { name: "未完待续...", url: ""}
     ]

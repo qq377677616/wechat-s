@@ -4,7 +4,7 @@ Page({
   //页面的初始数据
   data: {
     //前端的h5链接地址
-    // h5Url: 'https://game.flyh5.cn/resources/game/wechat/szq/webview/index.html'
+    // h5Url: 'http://game.flyh5.cn/resources/game/wechat/szq/demo/creatgit.html'
     h5Url: 'https://game.flyh5.cn/resources/game/sh_game/NissanDraw/main.html'
   },
   //生命周期函数--监听页面加载

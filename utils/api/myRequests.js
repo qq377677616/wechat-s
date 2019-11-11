@@ -1,10 +1,10 @@
 import $ from './request.js'
 
 const REQUESTURL = getApp().globalData.REQUESTURL
-const myRequest = (data, url, type = 'post') => {
-  let _url = `${REQUESTURL}${url}`
+const myRequest = (data, url, type = 'post', isUrl = false) => {
+  !isUrl && (url = `${REQUESTURL}${url}`)
   return new Promise((resolve, reject) => {
-    $[`${type}P`](_url, data).then(res => {
+    $[`${type}P`](url, data).then(res => {
       resolve(res)
     }).catch(err => {
       reject(err)

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "初始目录模板1.3",
+  "navigationBarTitleText": "初始目录模板1.4",
   "disableScroll": true,
   "usingComponents": {
     "controls": "/components/audiocontrols/controls"

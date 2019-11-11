@@ -23,7 +23,7 @@
 		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.3",
+	"libVersion": "2.9.0",
 	"appid": "wx9cb717d8151d8486",
 	"projectname": "%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%88%9D%E5%A7%8B%E6%A8%A1%E6%9D%BF%E7%9B%AE%E5%BD%95",
 	"debugOptions": {
@@ -49,8 +49,12 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 17,
+			"current": 12,
 			"list": [
 				{
 					"id": 0,
@@ -137,9 +141,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "地图",
-					"pathName": "pages/pages-list/map/index",
+					"id": 12,
+					"name": "我的地图",
+					"pathName": "pages/pages-list/map/my-map/index",
 					"query": "",
 					"scene": null
 				},
@@ -177,6 +181,27 @@
 					"pathName": "pages/pages-list/test/test",
 					"query": "",
 					"scene": 1011
+				},
+				{
+					"id": 18,
+					"name": "手写签名",
+					"pathName": "pages/pages-list/handwriting/handwriting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "机器人",
+					"pathName": "pages/pages-list/robot/robot",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "全景",
+					"pathName": "pages/pages-list/panorama/panorama",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

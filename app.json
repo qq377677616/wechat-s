@@ -29,7 +29,7 @@
     "pages/pages-list/prize/disks/disks",
     "pages/pages-list/prize/horse/horse",
     "pages/pages-list/map/index",
-    "pages/pages-list/map/qqmap/qqmap",
+    "pages/pages-list/map/my-map/index",
     "components/gesture/gesture",
     "pages/pages-list/websocket/websocket",
     "pages/pages-list/ar/ar",
@@ -40,8 +40,25 @@
     "pages/pages-list/custom/custom",
     "pages/pages-list/swiper3d/swiper3d",
     "pages/pages-list/test/test",
-    "pages/pages-list/scroll-show/scroll-show"
+    "pages/pages-list/scroll-show/scroll-show",
+    "pages/pages-list/handwriting/handwriting",
+    "pages/pages-list/robot/robot",
+    "pages/pages-list/panorama/panorama"
   ],
+  "plugins": {
+    "chatbot": {
+      "version": "1.1.4",
+      "provider": "wx8c631f7e9f2465e1"
+    },
+    "WechatSI": {
+      "version": "0.3.2",
+      "provider": "wx069ba97219f66d99"
+    },
+    "wxPano": {
+      "version": "1.4.4",
+      "provider": "wx386c038238531f87"
+    }
+  },
   "window": {
     "navigationBarTitleText": "小程序目录模板",
     "navigationBarBackgroundColor": "#038103",
