@@ -1,3 +1,0 @@
-<view class="container flex-cen-col">
-    <canvas canvas-id="areaCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
-</view>

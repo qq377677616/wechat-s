@@ -1,5 +1,5 @@
 import auth from '../publics/authorization.js'
-import api from './myRequests.js'
+import api from './my-requests.js'
 import tool from '../publics/tool.js'
 
 //登录

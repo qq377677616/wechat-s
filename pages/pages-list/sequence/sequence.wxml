@@ -5,3 +5,4 @@
   </view>
   <view class="start" bindtap="start" hidden="{{sequenceListIndex >= 0}}">播放序列帧</view>
 </view>
+ 

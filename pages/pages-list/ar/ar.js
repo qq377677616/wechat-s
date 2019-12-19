@@ -2,7 +2,7 @@
 //index.js
 //获取应用实例
 import $ from '../../../utils/api/request.js'
-import api from '../../../utils/api/myRequests.js'
+import api from '../../../utils/api/my-requests.js'
 import tool from '../../../utils/publics/tool.js'
 import upng from '../../../utils/upng/UPNG.js'
 // const context = wx.createCameraContext()

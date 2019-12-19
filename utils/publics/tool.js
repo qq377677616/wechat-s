@@ -124,7 +124,7 @@ const canvasImg = (options, callback) => {
     if (options.imgList && options.imgList.length > 0) {
       let _allNum = options.imgList.length || 0
       let _curNum = 0
-      for (let i = 0; i < _allNum; i++) {
+      for (let i = 0; i < _allNum; i++) { 
         let _curimg = options.imgList[i]
         getImageInfo(_curimg.url).then(res => {
           console.log(res)
@@ -199,6 +199,7 @@ const canvasImg = (options, callback) => {
         }
         for (let i = 0; i < options.textList.length; i++) {
           let _curText = options.textList[i]
+          ctx.font = "50px ygyxsziti2"
           ctx.setFontSize(_curText.fontSize)
           ctx.setFillStyle(_curText.color)
           ctx.setTextAlign('left')

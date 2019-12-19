@@ -14,6 +14,7 @@ Page({
   onLoad: function (options) {
     this.sequenceInit("sequenceList")//序列帧初始化
   },
+  //点击开始
   start() {
     this.sequenceStart("sequenceList").then(() => { console.log("序列帧播放完成") })//序列动画开始
   },
@@ -23,7 +24,7 @@ Page({
     let _url = this.data[sequence].url
     let _num = this.data[sequence].num
     for (let i = 0; i < _num; i++) {
-      _sequence.push({ url: `${_url}${i + 1}.png`, speed: this.data[sequence].speed, loop: this.data[sequence].loop })
+      _sequence.push({ url: `${_url}${i + 1}.png`, num: this.data[sequence].num, speed: this.data[sequence].speed, loop: this.data[sequence].loop })
     }
     this.setData({ [sequence]: _sequence })
   },
@@ -34,7 +35,7 @@ Page({
       let autoSequence = setInterval(() => {
         let _curSequenceIndex = this.data[`${sequence}Index`] || 0
         _curSequenceIndex++
-        if (_curSequenceIndex <= 30) {
+        if (_curSequenceIndex <= this.data[sequence][0].num) {
           this.setData({ [`${sequence}Index`]: _curSequenceIndex })
         } else {
           if ((typeof (this.data[sequence][0].loop) == 'boolean' && this.data[sequence][0].loop) || (typeof (this.data[sequence][0].loop) == 'number' && _num < this.data[sequence][0].loop)) {

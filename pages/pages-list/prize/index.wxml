@@ -3,4 +3,5 @@
   <view class="titles2" bindtap="jump" data-page="/pages/pages-list/prize/disk/disk">圆盘抽奖(针转)</view>
   <view class="titles2" bindtap="jump" data-page="/pages/pages-list/prize/disks/disks">圆盘抽奖(盘转)</view>
   <view class="titles2" bindtap="jump" data-page="/pages/pages-list/prize/horse/horse">跑马灯抽奖</view>
+  <view class="titles2" bindtap="jump" data-page="/pages/pages-list/prize/scrape/scrape">刮刮乐</view>
 </view>

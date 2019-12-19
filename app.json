@@ -14,14 +14,32 @@
     "pages/pages-list/calendar/calendarTemplate/index",
     "pages/pages-list/calendar/datepickerTemplate/index",
     "pages/pages-list/calendar/calendar/index",
-    "pages/pages-list/charts/charts",
-    "pages/pages-list/charts/charts/scrollline/scrollline",
-    "pages/pages-list/charts/charts/radar/radar",
-    "pages/pages-list/charts/charts/line/line",
-    "pages/pages-list/charts/charts/column/column",
-    "pages/pages-list/charts/charts/pie/pie",
-    "pages/pages-list/charts/charts/ring/ring",
-    "pages/pages-list/charts/charts/area/area",
+    "pages/pages-list/wx-charts/index/index",
+    "pages/pages-list/wx-charts/bar/index",
+    "pages/pages-list/wx-charts/measureText/index",
+    "pages/pages-list/wx-charts/line/index",
+    "pages/pages-list/wx-charts/scatter/index",
+    "pages/pages-list/wx-charts/sunburst/index",
+    "pages/pages-list/wx-charts/funnel/index",
+    "pages/pages-list/wx-charts/radar/index",
+    "pages/pages-list/wx-charts/gauge/index",
+    "pages/pages-list/wx-charts/pie/index",
+    "pages/pages-list/wx-charts/k/index",
+    "pages/pages-list/wx-charts/heatmap/index",
+    "pages/pages-list/wx-charts/tree/index",
+    "pages/pages-list/wx-charts/treemap/index",
+    "pages/pages-list/wx-charts/map/index",
+    "pages/pages-list/wx-charts/map2/index",
+    "pages/pages-list/wx-charts/graph/index",
+    "pages/pages-list/wx-charts/boxplot/index",
+    "pages/pages-list/wx-charts/parallel/index",
+    "pages/pages-list/wx-charts/sankey/index",
+    "pages/pages-list/wx-charts/themeRiver/index",
+    "pages/pages-list/wx-charts/lazyLoad/index",
+    "pages/pages-list/wx-charts/multiCharts/index",
+    "pages/pages-list/wx-charts/move/index",
+    "pages/pages-list/wx-charts/saveCanvas/index",
+    "pages/pages-list/wx-charts/worldMap/index",
     "pages/pages-list/circle/circle",
     "pages/pages-list/star-score/star-score",
     "pages/pages-list/prize/index",
@@ -30,7 +48,7 @@
     "pages/pages-list/prize/horse/horse",
     "pages/pages-list/map/index",
     "pages/pages-list/map/my-map/index",
-    "components/gesture/gesture",
+    "pages/pages-list/map/maps/maps",
     "pages/pages-list/websocket/websocket",
     "pages/pages-list/ar/ar",
     "pages/pages-list/img-code/img-code",
@@ -39,12 +57,25 @@
     "pages/pages-list/sequence/sequence",
     "pages/pages-list/custom/custom",
     "pages/pages-list/swiper3d/swiper3d",
-    "pages/pages-list/test/test",
     "pages/pages-list/scroll-show/scroll-show",
     "pages/pages-list/handwriting/handwriting",
     "pages/pages-list/robot/robot",
-    "pages/pages-list/panorama/panorama"
+    "pages/pages-list/test/test",
+    "pages/pages-list/panorama/panorama",
+    "pages/pages-list/test/test2",
+    "pages/pages-list/cropper/cropper"
   ],
+  "window": {
+    "navigationBarTitleText": "小程序目录模板",
+    "navigationBarBackgroundColor": "#027C60",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx5f891ae8337b8324",
+    "wx9db2c16d0633c2e7"
+  ],
+  "sitemapLocation": "sitemap.json",
   "plugins": {
     "chatbot": {
       "version": "1.1.4",
@@ -59,16 +90,6 @@
       "provider": "wx386c038238531f87"
     }
   },
-  "window": {
-    "navigationBarTitleText": "小程序目录模板",
-    "navigationBarBackgroundColor": "#038103",
-    "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": false
-  },
-  "navigateToMiniProgramAppIdList": [
-    "wx5f891ae8337b8324"
-  ],
-  "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"

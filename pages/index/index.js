@@ -6,7 +6,8 @@ import backgroundAudio from '../../utils/backgroundAudio.js'
 
 Page({
   data: {
-    jumpList: [
+    contentTpey: 0,//页面内容类型0为小程序模板内容，1为h5游戏嵌入小程序壳子内容
+    jumpList: [//模板列表
       { name: "授权", url: "/pages/pages-list/authorize/authorize"},
       { name: "获取手机号", url: "/pages/pages-list/get-phone/get-phone"},
       { name: "嵌入h5", url: "/pages/pages-list/webview/webview"},
@@ -17,7 +18,7 @@ Page({
       { name: "html解析", url: "/pages/pages-list/html/html"},
       { name: "摇一摇", url: "/pages/pages-list/shake/shake"},
       { name: "环形进度条", url: "/pages/pages-list/circle/circle"},
-      { name: "charts图表", url: "/pages/pages-list/charts/charts"},
+      { name: "charts图表", url: "/pages/pages-list/wx-charts/index/index"},
       { name: "星星评分", url: "/pages/pages-list/star-score/star-score"},
       { name: "抽奖系列", url: "/pages/pages-list/prize/index"},
       { name: "地图", url: "/pages/pages-list/map/index"},
@@ -33,14 +34,15 @@ Page({
       { name: "电子手写签名", url: "/pages/pages-list/handwriting/handwriting"},
       { name: "机器人", url: "/pages/pages-list/robot/robot"},
       { name: "全景", url: "/pages/pages-list/panorama/panorama"},
+      { name: "图片裁剪", url: "/pages/pages-list/cropper/cropper"},
       // { name: "测试", url: "/pages/pages-list/test/test"},
       { name: "未完待续...", url: ""}
     ]
   },
-  onLoad: function () {
+  onLoad() {
     mta.Page.init()//腾讯统计
     login.login().then(res => {
-      console.log("【静默登录】", res)
+      console.log("【静默登录成功】", res)
       //在这里做页面初始化请求操作，可保证本地缓存中有用户的openid/userId
     })
   },
@@ -50,5 +52,6 @@ Page({
   //跳转页面
   jumps(e) {
     if (this.data.jumpList[e.currentTarget.dataset.index].url) tool.jump_nav(this.data.jumpList[e.currentTarget.dataset.index].url)
-  }
+  },
+  onShareAppMessage() {}
 })

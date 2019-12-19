@@ -1,6 +1,6 @@
 // components/getPhoneNumber/getPhoneNumber.js
 const gets = require('../../utils/publics/authorization.js')
-const api = require('../../utils/api/myRequests.js')
+const api = require('../../utils/api/my-requests.js')
 const tool = require('../../utils/publics/tool')
 Component({
   /**

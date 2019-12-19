@@ -8,9 +8,6 @@ Page({
   data: {
 
   },
-  onShow() {
-    console.log(66666666666666)
-  },
   jump(e) {
     tool.jump_nav(e.currentTarget.dataset.page)
   },

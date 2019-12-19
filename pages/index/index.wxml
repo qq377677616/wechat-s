@@ -1,5 +1,6 @@
 <!--index.wxml-->
-<view class="index body flex-cen">
+<!-- 小程序模板内容 -->
+<view class="index body flex-cen" wx:if="{{contentTpey == 0}}">
   <!-- 列表 -->
   <scroll-view scroll-y>
     <view class="ul">
@@ -9,3 +10,5 @@
   <!-- 背景音乐控制按钮 -->
   <controls isPause="{{isPause}}"></controls>
 </view>
+<!-- h5游戏审核用 -->
+<h5Examine wx:if="{{contentTpey == 1}}"></h5Examine>

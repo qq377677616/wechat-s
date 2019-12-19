@@ -4,7 +4,7 @@ const ajax = (url, data = {}, method = 'GET', callback) => {
     data: data,
     method: method,
     header: {
-      'content-type': 'application/json'
+      'content-type': 'application/x-www-form-urlencoded'
     },
     success: function (res) {
       callback(res)
@@ -20,7 +20,7 @@ const gets = (url, data = {}, callback) => {
     data: data,
     method: 'GET',
     header: {
-      'content-type': 'application/json'
+      'content-type': 'application/x-www-form-urlencoded'
     },
     success: function (res) {
       callback(res)
@@ -36,7 +36,7 @@ const post = (url, data = {}, callback) => {
     data: data,
     method: 'POST',
     header: {
-      'content-type': 'application/json'
+      'content-type': 'application/x-www-form-urlencoded'
     },
     success: function (res) {
       callback(res)
@@ -46,7 +46,7 @@ const post = (url, data = {}, callback) => {
     }
   })
 }
-const getP = (url, data = {}, header = { 'content-type': 'application/json' }) => {
+const getP = (url, data = {}, header = { 'content-type': 'application/x-www-form-urlencoded' }) => {
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
@@ -62,7 +62,7 @@ const getP = (url, data = {}, header = { 'content-type': 'application/json' }) =
     })
   })
 }
-const postP = (url, data = {}, header = { 'content-type': 'application/json'}) => {
+const postP = (url, data = {}, header = { 'content-type': 'application/x-www-form-urlencoded'}) => {
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,

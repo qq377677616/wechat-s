@@ -1,6 +1,6 @@
 // pages/login/login.js
 import login from '../../../utils/api/login.js'
-import api from '../../../utils/api/myRequests.js'
+import api from '../../../utils/api/my-requests.js'
 import auth from '../../../utils/publics/authorization.js'
 import tool from '../../../utils/publics/tool.js'
 import backgroundAudio from '../../../utils/backgroundAudio.js'

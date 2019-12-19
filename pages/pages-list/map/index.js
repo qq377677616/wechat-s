@@ -17,7 +17,7 @@ Page({
   },
   jumps: function (e) {
     var page = e.currentTarget.dataset.page
-    tool.jump_nav(`/pages/pages-list/map/${page}/index`)
+    tool.jump_nav(`/pages/pages-list/map/${page}`)
     // wx.navigateTo({
     //   url: '/pages/pages-list/charts/charts/' + page + '/' + page
     // });

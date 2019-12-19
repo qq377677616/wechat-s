@@ -4,13 +4,14 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
@@ -19,11 +20,10 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		},
-		"nodeModules": true
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.0",
+	"libVersion": "2.9.3",
 	"appid": "wx9cb717d8151d8486",
 	"projectname": "%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%88%9D%E5%A7%8B%E6%A8%A1%E6%9D%BF%E7%9B%AE%E5%BD%95",
 	"debugOptions": {
@@ -201,6 +201,40 @@
 					"name": "全景",
 					"pathName": "pages/pages-list/panorama/panorama",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试页面2",
+					"pathName": "pages/pages-list/test/test2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "刮刮乐",
+					"pathName": "pages/pages-list/scrape/scrape",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "单地图",
+					"pathName": "pages/maps/maps",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "图片裁剪",
+					"pathName": "pages/pages-list/cropper/cropper",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "bar",
+					"pathName": "pages/pages-list/wx-charts/bar/index",
 					"scene": null
 				}
 			]

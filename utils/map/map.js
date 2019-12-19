@@ -1,7 +1,7 @@
 const QQMapWX = require('./qqmap-wx-jssdk.min.js')
 // const qqmapsdk = new QQMapWX({ key: 'GW3BZ-NMN6J-JSEFT-FTC6R-F7DA3-Z3FVJ' })
 const qqmapsdk = new QQMapWX({ key: '2O6BZ-N3HK6-IQTS3-EEVSR-AGBLQ-UBFKJ' })
-import my_Request from '../api/myRequests.js'
+import my_Request from '../api/my-requests.js'
 console.log("myRequest", my_Request)
 let myRequest = my_Request.myRequest
 //---------------------------------【微信小程序 API】---------------------------------

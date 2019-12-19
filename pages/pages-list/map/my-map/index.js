@@ -1,5 +1,5 @@
 // pages/pages-list/map/my-map/index.js
-import api from '../../../../utils/api/myRequests.js'
+import api from '../../../../utils/api/my-requests.js'
 import map from '../../../../utils/map/map.js'
 import tool from '../../../../utils/publics/tool.js'
 Page({
@@ -130,7 +130,8 @@ Page({
       longitude: lon,
       latitude: lat,
       width: 30,
-      height: 30
+      height: 30,
+      callout: { content: "这是一些文字" }
     }
     _markers.push(_item)
     this.setData({ markers: _markers })
@@ -144,7 +145,15 @@ Page({
       longitude: lon,
       latitude: lat,
       width: 30,
-      height: 30
+      height: 30,
+      callout: {
+        content: "如河南省开封市\n魏都路137号红河\n小区5栋2单元5楼2号",
+        bgColor: "#fff",
+        color: "#000",
+        padding: 10,
+        display: "ALWAYS",
+        borderRadius: 5
+      }
     }
     _markers.push(_item)
     this.setData({ markers: _markers })
