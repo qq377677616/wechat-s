@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "初始目录模板1.4",
+  "navigationBarTitleText": "初始目录模板1.5",
   "usingComponents": {
     "controls": "/components/audiocontrols/controls",
     "h5Examine": "/components/h5-examine/h5-examine"
