@@ -7,7 +7,7 @@ App({
     //腾讯统计
     auth.statistics(500689212)
     //背景音乐
-    backgroundAudio.backMusic(this, 'https://game.flyh5.cn/resources/game/wechat/szq/ftxiyouji/images/music.mp3')
+    // backgroundAudio.backMusic(this, 'https://game.flyh5.cn/resources/game/wechat/szq/ftxiyouji/images/music.mp3')
     //机器人
     robotInit.robotInit()
   },

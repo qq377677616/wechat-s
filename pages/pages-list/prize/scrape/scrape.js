@@ -14,7 +14,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     //刮刮乐初始化
     this.scrape = new Scrape(this, { width: this.data.canvasWidth, height: this.data.canvasHeight, range: "50%", ininOk: "scrapeIninOk", callback: "scrapeOk" })
   },
@@ -22,7 +22,7 @@ Page({
   scrapeIninOk() {
     tool.loading("刮刮乐初始化")
     setTimeout(() => {
-      this.setData({ prize_img: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_12.jpg'})
+      this.setData({ prize_img: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_12.jpg' })
       tool.loading_h()
     }, 800)
   },
@@ -31,10 +31,10 @@ Page({
     let _this = this
     tool.showModal("刮刮乐", "恭喜您刮中100元现金", "放进口袋,#CF5673", false).then(() => {
       tool.loading("刮刮乐重置中")
-      setTimeout(() => { 
+      setTimeout(() => {
         _this.scrape.init()
-        tool.alert("刮刮乐重置成功") 
+        tool.alert("刮刮乐重置成功")
       }, 800)
-    }) 
+    })
   }
 })

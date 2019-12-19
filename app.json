@@ -63,7 +63,8 @@
     "pages/pages-list/test/test",
     "pages/pages-list/panorama/panorama",
     "pages/pages-list/test/test2",
-    "pages/pages-list/cropper/cropper"
+    "pages/pages-list/cropper/cropper",
+    "pages/pages-list/prize/scrape/scrape"
   ],
   "window": {
     "navigationBarTitleText": "小程序目录模板",
