@@ -6,7 +6,7 @@ import backgroundAudio from '../../utils/backgroundAudio.js'
 
 Page({
   data: {
-    contentTpey: 0,//页面内容类型0为小程序模板内容，1为h5游戏嵌入小程序壳子内容
+    contentType: 1,//页面内容类型0为小程序模板内容，1为h5游戏嵌入小程序壳子内容
     jumpList: [//模板列表
       { name: "授权", url: "/pages/pages-list/authorize/authorize"},
       { name: "获取手机号", url: "/pages/pages-list/get-phone/get-phone"},
@@ -35,7 +35,7 @@ Page({
       { name: "机器人", url: "/pages/pages-list/robot/robot"},
       { name: "全景", url: "/pages/pages-list/panorama/panorama"},
       { name: "图片裁剪", url: "/pages/pages-list/cropper/cropper"},
-      // { name: "测试", url: "/pages/pages-list/test/test"},
+      { name: "测试", url: "/pages/pages-list/test/test"},
       { name: "未完待续...", url: ""}
     ]
   },
