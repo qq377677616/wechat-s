@@ -16,10 +16,10 @@ Page({
    */
   onLoad: function (options) {
     //刮刮乐初始化
-    this.scrape = new Scrape(this, { width: this.data.canvasWidth, height: this.data.canvasHeight, range: "50%", ininOk: "scrapeIninOk", callback: "scrapeOk" })
+    this.scrape = new Scrape(this, { width: this.data.canvasWidth, height: this.data.canvasHeight, range: "50%", ininOk: "scrapeInitOk", callback: "scrapeOk" })
   },
   //刮刮乐初始化OK
-  scrapeIninOk() {
+  scrapeInitOk() {
     tool.loading("刮刮乐初始化")
     setTimeout(() => {
       this.setData({ prize_img: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_12.jpg' })
