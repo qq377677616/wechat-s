@@ -23,8 +23,19 @@ class Scrape{
     this.page[this.opts.ininOk]();
   }
   drawMask(){
-    this.ctx.setFillStyle(this.maskColor);
-    this.ctx.fillRect(0, 0, this.width, this.height);
+    if (this.opts.layer_img) {
+      try {
+        this.ctx.drawImage(this.opts.layer_img, 0, 0, this.width, this.height);
+      }
+      catch(err) {
+        console.log("err", err)
+        this.ctx.setFillStyle(this.maskColor);
+        this.ctx.fillRect(0, 0, this.width, this.height);
+      }
+    } else {
+      this.ctx.setFillStyle(this.maskColor);
+      this.ctx.fillRect(0, 0, this.width, this.height);
+    }
     this.ctx.draw();
   }
   eraser(e,bool){
@@ -66,6 +77,7 @@ class Scrape{
     const _this = this;
     _this.page.onTouchStart = function(e){
       _this.eraser(e,true);
+      _this.page[_this.opts.scrapeStart]();
     }
     _this.page.onTouchMove = function (e) {
       _this.eraser(e);
