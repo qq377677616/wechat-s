@@ -35,7 +35,7 @@ Page({
       { name: "机器人", url: "/pages/pages-list/robot/robot"},
       { name: "全景", url: "/pages/pages-list/panorama/panorama"},
       { name: "图片裁剪", url: "/pages/pages-list/cropper/cropper"},
-      { name: "测试", url: "/pages/pages-list/test/test"},
+      // { name: "测试", url: "/pages/pages-list/test/test"},
       { name: "下一版本见...", url: ""}
     ]
   },
