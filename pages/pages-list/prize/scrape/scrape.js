@@ -31,7 +31,8 @@ Page({
     this.scrape = new Scrape(this, { 
       width: this.data.canvasWidth,//刮刮乐区域宽度 
       height: this.data.canvasHeight,//刮刮乐区域高度
-      range: "50%", size: 15,//判定阀值 
+      range: "50%",//判定阀值 
+      size: 15,//手指触摸宽度
       maskColor: this.data.layer_Color,//刮层颜色
       layer_img: this.data.layer_img,//刮层图片
       initOk: "scrapeInitOk",//初始化完成回调
