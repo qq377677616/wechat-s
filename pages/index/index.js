@@ -36,7 +36,7 @@ Page({
       { name: "全景", url: "/pages/pages-list/panorama/panorama"},
       { name: "图片裁剪", url: "/pages/pages-list/cropper/cropper"},
       { name: "测试", url: "/pages/pages-list/test/test"},
-      { name: "未完待续...", url: ""}
+      { name: "下一版本见...", url: ""}
     ]
   },
   onLoad() {
