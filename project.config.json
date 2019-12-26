@@ -237,6 +237,13 @@
 					"pathName": "pages/pages-list/prize/scrape/scrape",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "图表",
+					"pathName": "pages/pages-list/wx-charts/index/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

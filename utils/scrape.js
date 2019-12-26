@@ -20,7 +20,6 @@ class Scrape{
     this.ctx = wx.createCanvasContext(this.canvasId, this);
     this.drawMask();
     this.bindTouch();
-    this.page[this.opts.ininOk]();
   }
   drawMask(){
     if (this.opts.layer_img) {
@@ -37,6 +36,7 @@ class Scrape{
       this.ctx.fillRect(0, 0, this.width, this.height);
     }
     this.ctx.draw();
+    this.page[this.opts.initOk]();
   }
   eraser(e,bool){
     let len = this.clearPoints.length;
@@ -86,7 +86,7 @@ class Scrape{
       if(_this.show){
         _this.ctx.clearRect(0, 0, _this.width, _this.height);
         _this.ctx.draw();
-        _this.page[_this.opts.callback]();
+        _this.page[_this.opts.scrapeOk]();
       }
     }
   }

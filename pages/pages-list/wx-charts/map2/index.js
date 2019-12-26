@@ -1,5 +1,5 @@
 import * as echarts from '../../../../utils/ec-canvas/echarts';
-import world from '../../../../utils/ec-canvas/world';
+// import world from '../../../../utils/ec-canvas/world';
 import geoJson from './mapData.js';
 
 const app = getApp();

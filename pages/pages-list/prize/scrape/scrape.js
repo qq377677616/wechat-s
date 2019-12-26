@@ -28,23 +28,34 @@ Page({
   },
   //刮刮乐初始化
   scrape() {
-    this.scrape = new Scrape(this, { width: this.data.canvasWidth, height: this.data.canvasHeight, range: "50%", maskColor: this.data.layer_Color, layer_img: this.data.layer_img, ininOk: "scrapeInitOk", scrapeStart: "scrapeStart", callback: "scrapeOk" })
+    this.scrape = new Scrape(this, { 
+      width: this.data.canvasWidth,//刮刮乐区域宽度 
+      height: this.data.canvasHeight,//刮刮乐区域高度
+      range: "50%", size: 15,//判定阀值 
+      maskColor: this.data.layer_Color,//刮层颜色
+      layer_img: this.data.layer_img,//刮层图片
+      initOk: "scrapeInitOk",//初始化完成回调
+      scrapeStart: "scrapeStart",//开始刮回调
+      scrapeOk: "scrapeOk"//判定刮完回调
+    })
   },
   //刮刮乐初始化OK
   scrapeInitOk() {
-    tool.loading("刮刮乐初始化")
+    tool.loading("【刮刮乐初始化】")
     setTimeout(() => {
+      console.log("【刮刮乐初始化完成】")
       this.setData({ prize_img: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_12.jpg' })
       tool.loading_h()
     }, 800)
   },
   //开始刮奖
   scrapeStart() {
-    console.log("开始刮奖")
+    console.log("【开始刮奖】")
   },
   //刮完奖回调
   scrapeOk() {
     let _this = this
+    console.log("【刮完Ok】")
     tool.showModal("刮刮乐", "恭喜您刮中100元现金", "放进口袋,#CF5673", false).then(() => {
       tool.loading("刮刮乐重置中")
       setTimeout(() => {
