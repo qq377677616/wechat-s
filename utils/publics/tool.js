@@ -1,4 +1,3 @@
-const QQMapWX = require('../qqmap-wx-jssdk.min.js')
 //alert提示
 const alert = (str, duration = 1500, icon = "none", callback) => {
   wx.showToast({

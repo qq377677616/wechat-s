@@ -205,13 +205,6 @@
 				},
 				{
 					"id": -1,
-					"name": "测试页面2",
-					"pathName": "pages/pages-list/test/test2",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "单地图",
 					"pathName": "pages/maps/maps",
 					"query": "",
@@ -242,6 +235,13 @@
 					"id": -1,
 					"name": "图表",
 					"pathName": "pages/pages-list/wx-charts/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试2",
+					"pathName": "pages/pages-list/test/test2",
 					"query": "",
 					"scene": null
 				}

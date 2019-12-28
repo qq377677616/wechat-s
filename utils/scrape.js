@@ -35,7 +35,7 @@ class Scrape{
       this.ctx.setFillStyle(this.maskColor);
       this.ctx.fillRect(0, 0, this.width, this.height);
     }
-    this.ctx.draw();
+    this.ctx.draw(); 
     this.page[this.opts.initOk]();
   }
   eraser(e,bool){

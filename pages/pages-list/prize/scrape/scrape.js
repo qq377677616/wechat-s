@@ -9,14 +9,17 @@ Page({
     canvasWidth: 300,//刮刮乐宽
     canvasHeight: 160,//刮刮乐高
     prize_img: '',//奖品图片
-    layer_Color: '#ddd',//刮层颜色
+    layer_color: '#ddd',//刮层颜色
     layer_img: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_12.png'//刮层图片
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad(options) {
+    
+  },
+  onReady() {
     if (this.data.layer_img) {
       tool.getImageInfo(this.data.layer_img).then(res => {
         this.data.layer_img = res.path
@@ -32,8 +35,8 @@ Page({
       width: this.data.canvasWidth,//刮刮乐区域宽度 
       height: this.data.canvasHeight,//刮刮乐区域高度
       range: "50%",//判定阀值 
-      size: 15,//手指触摸宽度
-      maskColor: this.data.layer_Color,//刮层颜色
+      size: 5,//手指触摸宽度
+      maskColor: this.data.layer_color,//刮层颜色
       layer_img: this.data.layer_img,//刮层图片
       initOk: "scrapeInitOk",//初始化完成回调
       scrapeStart: "scrapeStart",//开始刮回调
@@ -41,7 +44,7 @@ Page({
     })
   },
   //刮刮乐初始化OK
-  scrapeInitOk() {
+  scrapeInitOk() { 
     tool.loading("【刮刮乐初始化】")
     setTimeout(() => {
       console.log("【刮刮乐初始化完成】")

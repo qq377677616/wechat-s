@@ -1,5 +1,5 @@
 <!--components/circle/circle.wxml-->
-<wxs src="../../common/wxs/my-wxs.wxs" module="myWxs"></wxs>
+<wxs src="../../assets/wxs/my-wxs.wxs" module="myWxs"></wxs>
 <view class="circle">
   <view class='progress_box'>
     <canvas class="progress_bg" style="width:{{circle.width}}px;height:{{circle.width}}px" canvas-id="canvasProgressbg"></canvas> 
