@@ -53,7 +53,9 @@
     "pages/pages-list/panorama/panorama",
     "pages/pages-list/test/test2",
     "pages/pages-list/cropper/cropper",
-    "pages/pages-list/prize/scrape/scrape"
+    "pages/pages-list/prize/scrape/scrape",
+    "pages/pages-list/sliding-del/sliding-del",
+    "pages/pages-list/parabola/parabola"
   ],
   "window": {
     "navigationBarTitleText": "小程序目录模板",

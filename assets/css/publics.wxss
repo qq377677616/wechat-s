@@ -19,7 +19,10 @@ button::after{border:none;}
 .posa{position: absolute;width:100%;height:100%;left:0;top:0;}
 .haze{position: fixed;width:100%;height:100%;background: rgba(0,0,0,.7);left:0;top:0;z-index: 9999}
 ::-webkit-scrollbar {width: 0;height: 0;color: transparent;}
-.nowrap{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.ell{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.ell2{display: -webkit-box;-webkit-box-orient: vertical;text-overflow: ellipsis;overflow: hidden;-webkit-line-clamp: 2;}
+.ell3{display: -webkit-box;-webkit-box-orient: vertical;text-overflow: ellipsis;overflow: hidden;-webkit-line-clamp: 3;}
+.ell4{display: -webkit-box;-webkit-box-orient: vertical;text-overflow: ellipsis;overflow: hidden;-webkit-line-clamp: 4;}
 button.disabled{background: #ccc;}
 .clamp3{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;}
 /*  重写 radio 样式  */

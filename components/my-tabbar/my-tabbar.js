@@ -9,6 +9,10 @@ Component({
     styleIsolation: 'apply-shared'
   },
   properties: {
+    tabList: {
+      type: Array,
+      value: []  
+    },
     curIndex: {
       type: Number,
       value: -1
@@ -30,7 +34,7 @@ Component({
 
   },
   attached() {
-    this.setData({ tabList: tabbar.tabUrl })
+    this.setData({ tabList: this.data.tabList.length > 0 ? this.data.tabList : tabbar.tabUrl })
   },
   /**
    * 组件的方法列表

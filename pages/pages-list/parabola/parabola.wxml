@@ -1,0 +1,30 @@
+<view class="body">
+  <!-- 商品列表 -->
+  <view class="wrap">
+    <view class="ul">
+      <view class="li flex" wx:for="{{10}}" wx:key="key">
+        <view class="img"></view>
+        <view class="box flex-col">
+          <view>
+            <view class="h3 ell2">鹰牌花旗参饮料310ml 提神抗疲劳一箱24瓶</view>
+            <view class="h4">熬夜大金瓶 提升免疫</view>
+          </view>
+          <view class="flex-bet">
+            <view class="h5">￥588.50</view>
+            <view class="icon iconfont icon-gouwuche" id="goods{{index}}" data-id="#goods{{index}}" bindtap="addCart"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <my-tabbar tabList="{{tabList}}" bindmytab="bindmytab" curIndex="2" navType="{{0}}"></my-tabbar>
+  <!-- 抛物体和目标位置 -->
+  <view>
+    <!-- 抛物体 -->
+    <view wx:for="{{(ballIndex || 1)}}" wx:key="key" wx:if="{{(ballIndex || 1) == index + 1}}" animation="{{animationY[index]}}" style="position:fixed;top:{{ballY[index]}}px;" hidden="{{!showBall}}">
+      <view class="ball" animation="{{animationX[index]}}" style="position:fixed;left:{{ballX[index]}}px;width:{{addCartConfig.ballSize[0] || 20}}px;height:{{addCartConfig.ballSize[1] || 20}}px;background: {{addCartConfig.ballColor || '#ffcd43'}};"></view>
+    </view>
+    <!-- 目标位置 -->
+    <view id="car-box"></view>
+  </view>
+</view>
