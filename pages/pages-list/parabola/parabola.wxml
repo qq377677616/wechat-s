@@ -15,16 +15,10 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> 
   </view>
   <my-tabbar tabList="{{tabList}}" bindmytab="bindmytab" curIndex="2" navType="{{0}}"></my-tabbar>
   <!-- 抛物体和目标位置 -->
-  <view>
-    <!-- 抛物体 -->
-    <view wx:for="{{(ballIndex || 1)}}" wx:key="key" wx:if="{{(ballIndex || 1) == index + 1}}" animation="{{animationY[index]}}" style="position:fixed;top:{{ballY[index]}}px;" hidden="{{!showBall}}">
-      <view class="ball" animation="{{animationX[index]}}" style="position:fixed;left:{{ballX[index]}}px;width:{{addCartConfig.ballSize[0] || 20}}px;height:{{addCartConfig.ballSize[1] || 20}}px;background: {{addCartConfig.ballColor || '#ffcd43'}};"></view>
-    </view>
-    <!-- 目标位置 -->
-    <view id="car-box"></view>
-  </view>
+  <parabola id="parabola" addCartConfig="{{addCartConfig}}" bindaddCartEndCallback="addCartEndCallback"></parabola>
+  <view id="car-box"></view>
 </view>

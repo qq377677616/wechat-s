@@ -7,5 +7,4 @@
 .li .h4{font-size: 20rpx;color:#999;margin-top: 20rpx;}
 .li .h5,.li .icon{font-size: 30rpx;color:#D73F45;}
 .li .icon{font-size: 38rpx;}
-.ball{border-radius: 50%;}
 #car-box{position: fixed;bottom:60rpx;left:60%;width:50rpx;height:50rpx;}

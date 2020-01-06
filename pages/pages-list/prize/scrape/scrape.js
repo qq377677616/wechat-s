@@ -30,7 +30,7 @@ Page({
     }
   },
   //刮刮乐初始化
-  scrape() {
+  scrape() { 
     this.scrape = new Scrape(this, { 
       width: this.data.canvasWidth,//刮刮乐区域宽度 
       height: this.data.canvasHeight,//刮刮乐区域高度
