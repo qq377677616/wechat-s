@@ -4,7 +4,7 @@
   <!-- 列表 -->
   <scroll-view scroll-y>
     <view class="ul">
-      <view wx:for="{{jumpList}}" wx:key="{{index}}" class="li" data-index="{{index}}" bindtap="jumps">{{item.name}}</view>
+      <view wx:for="{{jumpList}}" wx:key="index" class="li" data-index="{{index}}" bindtap="jumps">{{item.name}}</view>
     </view>
   </scroll-view>
   <!-- 背景音乐控制按钮 -->

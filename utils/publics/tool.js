@@ -69,6 +69,13 @@ const getDom = ele => {
     })
   })
 }
+//设置tabbar右上角文字
+const setTab = (index, value) => {
+  wx.setTabBarBadge({
+    index: index,
+    text: typeof value == 'number' ? value + '' : value
+  })
+}
 //播放视频
 const videoPlay = (ele, isFullScreen = true) => {
   let videoContext = wx.createVideoContext(ele)
@@ -123,14 +130,24 @@ const canvasImg = (options, callback) => {
     if (options.imgList && options.imgList.length > 0) {
       let _allNum = options.imgList.length || 0
       let _curNum = 0
-      for (let i = 0; i < _allNum; i++) { 
-        let _curimg = options.imgList[i]
+      let _getImage = []
+      _getImageInfo()
+      function _getImageInfo() {
+        let _curimg = options.imgList[_curNum]
         getImageInfo(_curimg.url).then(res => {
-          console.log(res)
           _curNum++
-          _curimg.url = res.path
-          _curimg.imgW = res.width
-          _curimg.imgH = res.height
+          _getImage.push(res)
+          if (_curNum >= _allNum) {
+            _drawImage()
+          } else { _getImageInfo() }
+        })
+      }
+      function _drawImage() {
+        for (let i = 0; i < _getImage.length; i++) { 
+          let _curimg = options.imgList[i]
+          _curimg.url = _getImage[i].path
+          _curimg.imgW = _getImage[i].width
+          _curimg.imgH = _getImage[i].height
           if (_curimg.isRadius) {
             ctx.save()
             ctx.beginPath()
@@ -147,10 +164,12 @@ const canvasImg = (options, callback) => {
           }
           ctx.drawImage(_curimg.url, (_curimg.imgW - _drawW) / 2, (_curimg.imgH - _drawH) / 2, _drawW, _drawH, _curimg.imgX, _curimg.imgY, _curimg.drawW || _curimg.imgW, _curimg.drawH || _curimg.imgH)
           ctx.restore()
-          if (_curNum >= _allNum) {
+        console.log('_getImage.lenth - 1', _getImage.length - 1)
+        if (i == _getImage.length - 1) {
+            console.log("77777")
             drawNext()
           }
-        })
+        }
       }
     } else {
       drawNext()
@@ -226,96 +245,6 @@ const canvasImg = (options, callback) => {
     }
   })
 }
-// const canvasImg = (options, callback) => {
-//   const ctx = wx.createCanvasContext(options.canvasId);
-//   ctx.setFillStyle('#fff')
-//   ctx.rect(0, 0, options.canvasSize.split("*")[0], options.canvasSize.split("*")[1])
-//   ctx.fill()
-//   if (options.imgList.length > 0) {
-//     for (let i = 0; i < options.imgList.length; i++) {
-//       let _curimg = options.imgList[i]
-//       if (_curimg.isRadius) {
-//         ctx.save()
-//         ctx.beginPath()
-//         ctx.arc(_curimg.imgX + _curimg.imgW / 2, _curimg.imgY + _curimg.imgW / 2, _curimg.imgW / 2, 0, 2 * Math.PI)
-//         ctx.clip()
-//       }
-//       ctx.drawImage(_curimg.url, _curimg.imgX, _curimg.imgY, _curimg.imgW, _curimg.imgH)
-//       ctx.restore()
-//     }
-//   }
-//   if (options.textList.length > 0) {
-//     let _textList = options.textList
-//     for (let i = 0; i < _textList.length; i++) {
-//       let _wrap = _textList[i].wrap
-//       let _h = _textList[i].textY
-//       let _string = _textList[i].string
-//       if (_textList[i].string.length > _textList[i].wrap) {
-//         let _arrText = []
-//         _arrText = [_textList[i].string]
-//         let _x = 0
-//         let _this = this
-//         calcImgText(_x)
-//         function calcImgText(x) {
-//           for (let j = 0; j <= (_arrText[x].length / _textList[i].wrap); j++) {
-//             if (_arrText[x].slice(j * _wrap, (j + 1) * _wrap) == '') { continue }
-//             let _item = cloneObj(_textList[i])
-//             _item.string = _arrText[x].slice(j * _wrap, (j + 1) * _wrap)
-//             _item.textY = _h
-//             _textList.push(_item)
-//             _h += _item.lineHeight
-//           }
-//           if (_x < _arrText.length - 1) {
-//             _x++
-//             calcImgText(_x)
-//           }
-//         }
-//         function cloneObj(obj) {
-//           var newObj = {};
-//           if (obj instanceof Array) {
-//             newObj = [];
-//           }
-//           for (var key in obj) {
-//             var val = obj[key];
-//             newObj[key] = typeof val === 'object' ? cloneObj(val) : val;
-//           }
-//           return newObj;
-//         }
-//         _textList.splice(i, 1)
-//       }
-//     }
-//     for (let i = 0; i < options.textList.length; i++) {
-//       let _curText = options.textList[i]
-//       ctx.setFontSize(_curText.fontSize)
-//       ctx.setFillStyle(_curText.color)
-//       ctx.setTextAlign('left')
-//       ctx.setTextBaseline('top')
-//       ctx.fillText(_curText.string, _curText.textX, _curText.textY)
-//       if (_curText.bold) {
-//         ctx.fillText(_curText.string, _curText.textX, _curText.textY - 0.5)
-//         ctx.fillText(_curText.string, _curText.textX - 0.5, _curText.textY)
-//       }
-//       ctx.fillText(_curText.string, _curText.textX, _curText.textY)
-//       if (_curText.bold) {
-//         ctx.fillText(_curText.string, _curText.textX, _curText.textY + 0.5)
-//         ctx.fillText(_curText.string, _curText.textX + 0.5, _curText.textY)
-//       }
-//     }
-//     //ctx.draw(true)
-//   }
-//   ctx.draw(true, () => {
-//     if (callback) {
-//       setTimeout(() => {
-//         wx.canvasToTempFilePath({
-//           canvasId: options.canvasId,
-//           success(res) {
-//             callback(res.tempfilePathArr)
-//           }
-//         })
-//       }, 100)
-//     }
-//   })
-// }
 //获取图片信息
 const getImageInfo = imgUrl => {
   return new Promise(resolve => {
@@ -415,6 +344,7 @@ module.exports = {
   getWxConfig,
   getSystemInfo,
   getDom,
+  setTab,
   videoPlay,
   jump_nav,
   jump_red,

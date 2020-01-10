@@ -22,8 +22,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // websocketUrl: 'wss://dev.flyh5.cn/yinian-answer/websocket/',//websocket地址
-    websocketUrl: 'ws://121.40.105.37:7272',//websocket地址
+    websocketUrl: 'wss://dev.flyh5.cn/yinian-answer/websocket/',//websocket地址
+    // websocketUrl: 'ws://121.40.105.37:7272',//websocket地址
     peopleNum: 1,//几v几
     my: '张三丰',//我的昵称
     blueList:[],//已方队伍

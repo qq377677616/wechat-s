@@ -256,6 +256,13 @@
 					"id": -1,
 					"name": "抛物线动画",
 					"pathName": "pages/pages-list/parabola/parabola",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "授权",
+					"pathName": "pages/pages-list/authorize/authorize",
 					"scene": null
 				}
 			]

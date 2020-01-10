@@ -24,7 +24,7 @@ const login = () => {
       } else {
         reject(res)
       }
-    })
+    }).catch(err => { reject(err) })
   })
 }
 

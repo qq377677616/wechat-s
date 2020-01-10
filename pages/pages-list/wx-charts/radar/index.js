@@ -38,6 +38,14 @@ function initChart(canvas, width, height) {
         max: 500
       },
       {
+        name: '体育',
+        max: 500
+      },
+      {
+        name: '衣服',
+        max: 500
+      },
+      {
         name: '医疗',
         max: 500
       },
@@ -51,11 +59,11 @@ function initChart(canvas, width, height) {
       name: '预算 vs 开销',
       type: 'radar',
       data: [{
-        value: [430, 340, 500, 300, 490, 400],
+        value: [430, 340, 500, 300, 350, 450, 490, 400],
         name: '预算'
       },
       {
-        value: [300, 430, 150, 300, 420, 250],
+        value: [300, 430, 150, 300, 380, 420, 420, 250],
         name: '开销'
       }
       ]
