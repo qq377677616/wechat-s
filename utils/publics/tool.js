@@ -164,9 +164,7 @@ const canvasImg = (options, callback) => {
           }
           ctx.drawImage(_curimg.url, (_curimg.imgW - _drawW) / 2, (_curimg.imgH - _drawH) / 2, _drawW, _drawH, _curimg.imgX, _curimg.imgY, _curimg.drawW || _curimg.imgW, _curimg.drawH || _curimg.imgH)
           ctx.restore()
-        console.log('_getImage.lenth - 1', _getImage.length - 1)
         if (i == _getImage.length - 1) {
-            console.log("77777")
             drawNext()
           }
         }
@@ -322,7 +320,6 @@ const uploadFiles = (filePathArr, url) => {
 }
 //查看文件
 const openDocument = filePath => {
-  console.log("filePath", filePath)
   wx.downloadFile({
     // 示例 url，并非真实存在
     url: filePath,
