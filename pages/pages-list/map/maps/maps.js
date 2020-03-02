@@ -79,5 +79,9 @@ Page({
       return (Math.random() * 5 + 1) / 1000 * (Math.random() > .5 ? -1 : 1)
     }
     this.setData({ markers: this.data.markers.concat(_markers) })
+  },
+  //点击标记点事件
+  markertap(e) {
+    console.log("e", e)
   }
 })

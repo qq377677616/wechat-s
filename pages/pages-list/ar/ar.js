@@ -8,7 +8,7 @@ import upng from '../../../utils/upng/UPNG.js'
 // const context = wx.createCameraContext()
 Page({
   data: {
-    type: 1,//0为ar，1为拍照
+    type: 0,//0为ar，1为拍照
     photographOk: false,//拍摄是否完成
     maxNum: 3,//最多自拍几张
     speed: 3,//多少秒自动拍摄一张
@@ -19,15 +19,23 @@ Page({
     imgw: '520rpx',
     imgh: '520rpx',
     isSend: true,
-    device: 'front'
+    device: 'back'
   },
   //切换前后摄像头
   deviceSwitch() {
     let _device = (this.data.device == 'back' ? 'front' : 'back')
     this.setData({ device: _device })
   },
-  onLoad: function () {
+  onLoad() {
     tool.loading("智能相机初始化中")
+    if (this.data.type == 0) {
+      this.arInit()
+    } else if (this.data.type == 1) {
+      this.timingPhotograph()
+    }
+  },
+  //定时自拍
+  timingPhotograph() {
     let times = this.data.speed
     const context = wx.createCameraContext()
     const listener = context.onCameraFrame((frame) => {
@@ -44,8 +52,7 @@ Page({
       }, 1000)
       console.log(frame.data instanceof ArrayBuffer, frame.width, frame.height)
     })
-    listener.start()
-    // this.autoPhotograph()
+    this.autoPhotograph()
   },
   //自动拍照
   autoPhotograph() {
@@ -61,10 +68,12 @@ Page({
   },
   //ar
   arInit() {
+    console.log("【监听开始】")
     const context = wx.createCameraContext()
     let index = 0
     //监听摄像头
-    const listener = context.onCameraFrame((frame) => {
+    const listener = context.onCameraFrame(frame => {
+      tool.alert("智能相机已准备")
       index++
       if (index % 20 == 0 && this.data.isSend) {
         this.data.isSend = false
@@ -75,10 +84,11 @@ Page({
           imgw: frame.width + 'px',
           imgh: (frame.height) + 'px'
         })
+        console.log("【传给后台的img】", this.data.src.slice(0, 30))
         //调取AI图片识别接口  
-        $.postP('http://game.flyh5.cn/game/wx7c3ed56f7f792d84/rdl_logo/public/index/index/pic_search', { img: this.data.src }).then(res => {
-          console.log("识别返回", res)
-          let _r, _x
+        $.postP('http://game.flyh5.cn/game/wx7c3ed56f7f792d84/rdl_logo/public/index/index/search_test', { img: this.data.src }).then(res => {
+          console.log("【识别返回】", res)
+          let _x
           let _data = JSON.parse(res.data.data.result[0].brief);
           _x = parseFloat(res.data.data.result[0].score * 100).toFixed(2)
           console.log("相似度", _x)
@@ -86,20 +96,7 @@ Page({
             this.data.isSend = true
             return
           }
-          if (_data.name == 'logo1') {
-            _r = '蓝'
-          } else if (_data.name == 'logo2') {
-            _r = '绿'
-          } else if (_data.name == 'logo3') {
-            _r = '粉'
-          } else if (_data.name == 'logo4') {
-            _r = '青'
-          } else if (_data.name == 'logo5') {
-            _r = '黄'
-          } else if (_data.name == 'logo6') {
-            _r = '红'
-          }
-          tool.showModal("AR扫描结果", `您扫的是${_r}精灵,相似度高达${_x}%`, '好的,#333', '结束,#DD5044').then(res => {
+          tool.showModal("AR扫描结果", `您扫的物体相似度高达${_x}%`, '好的,#333', '结束,#DD5044').then(res => {
             if (res) {
               setTimeout(() => {
                 this.data.isSend = true

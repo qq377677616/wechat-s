@@ -21,17 +21,8 @@ Page({
       id: 'line',
       name: '折线图'
     }, {
-      id: 'gauge',
-      name: '仪表盘'
-    }, {
       id: 'radar',
       name: '雷达图'
-    }, {
-      id: 'tree',
-      name: '树图'
-    }, {
-      id: 'sunburst',
-      name: '旭日图'
     }, {
       id: 'map',
       name: '中国地图'

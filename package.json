@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "widget-ui": "^1.0.2",
+    "wxml-to-canvas": "^1.0.2"
+  }
+}

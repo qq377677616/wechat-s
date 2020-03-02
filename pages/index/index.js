@@ -1,4 +1,5 @@
 //index.js
+import api from '../../utils/api/my-requests.js'
 import login from '../../utils/api/login.js'
 import mta from '../../utils/mta_analysis.js'
 import tool from '../../utils/publics/tool.js'
@@ -7,7 +8,7 @@ import backgroundAudio from '../../utils/backgroundAudio.js'
 
 Page({
   data: {
-    contentType: 0,//页面内容类型0为小程序模板内容，1为h5游戏嵌入小程序壳子审核专用内容
+    contentType: 0,//页面内容类型0为小程序模板内容，1为h5游戏嵌入小程序壳子审核专用内容，当需要h5游戏审核时默认置为-1
     jumpList: [//模板列表
       { name: "授权", url: "/pages/pages-list/authorize/authorize"},
       { name: "获取手机号", url: "/pages/pages-list/get-phone/get-phone"},
@@ -38,19 +39,34 @@ Page({
       { name: "图片裁剪", url: "/pages/pages-list/cropper/cropper"},
       { name: "滑动删除", url: "/pages/pages-list/sliding-del/sliding-del"},
       { name: "抛物线动画", url: "/pages/pages-list/parabola/parabola"},
-      // { name: "测试", url: "/pages/pages-list/test/test"},
+      { name: "索引列表", url: "/pages/pages-list/index-list/index-list"},
+      { name: "测试", url: "/pages/pages-list/test/test"},
       { name: "下一版本见...", url: ""}
     ]
   },
   onLoad() {
     mta.Page.init()//腾讯统计
+    this.configure()//核弹系统
+    //静默登录
     login.login().then(res => {
       console.log("【静默登录成功】", res)
       //在这里做页面初始化请求操作，可保证本地缓存中有用户的openid/userId
+    }).catch(err => {
+      console.log("err", err)
     })
   },
   onShow() {
     this.setData({ isPause: backgroundAudio.audioState(getApp()) })//背景音乐相关
+  },
+  //核弹系统
+  configure() {
+    if (this.data.contentType != -1) return
+    api.configure().then(res => {
+      let _data = JSON.parse(decodeURIComponent(res.data.data.content.info))
+      console.log("configure", _data)
+      this.setData({ contentType: _data.custom.h5.val })
+      wx.setNavigationBarTitle({ title: '自然资源' })
+    })
   },
   //跳转页面
   jumps(e) {

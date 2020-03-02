@@ -13,6 +13,7 @@
 		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
+		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
 		"uploadWithSourceMap": true,
@@ -263,6 +264,20 @@
 					"id": -1,
 					"name": "授权",
 					"pathName": "pages/pages-list/authorize/authorize",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "索引列表",
+					"pathName": "pages/pages-list/index-list/index-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地图-纯净版",
+					"pathName": "pages/pages-list/map/maps/maps",
 					"scene": null
 				}
 			]

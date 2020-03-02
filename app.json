@@ -55,6 +55,7 @@
     "pages/pages-list/cropper/cropper",
     "pages/pages-list/prize/scrape/scrape",
     "pages/pages-list/sliding-del/sliding-del",
+    "pages/pages-list/index-list/index-list",
     "pages/pages-list/parabola/parabola"
   ],
   "window": {
@@ -65,7 +66,8 @@
   },
   "navigateToMiniProgramAppIdList": [
     "wx5f891ae8337b8324",
-    "wx9db2c16d0633c2e7"
+    "wx9db2c16d0633c2e7",
+    "wxec482d13249feff9"
   ],
   "sitemapLocation": "sitemap.json",
   "plugins": {
