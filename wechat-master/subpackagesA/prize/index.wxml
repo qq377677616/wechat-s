@@ -1,0 +1,8 @@
+<!--subpackages/prize/index.wxml-->
+<view class="body flex-cen-col">
+  <view class="titles2" bindtap="jump" data-page="/subpackages/prize/disk/disk">圆盘抽奖(针转)</view>
+  <view class="titles2" bindtap="jump" data-page="/subpackages/prize/disks/disks">圆盘抽奖(盘转)</view>
+  <view class="titles2" bindtap="jump" data-page="/subpackages/prize/horse/horse">跑马灯抽奖</view>
+  <view class="titles2" bindtap="jump" data-page="/subpackages/prize/scrape/scrape">刮刮乐</view>
+  <view class="titles2" bindtap="jump" data-page="/subpackages/prize/tiger/tiger">老虎机</view>
+</view>

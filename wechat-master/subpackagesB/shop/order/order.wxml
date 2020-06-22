@@ -1,0 +1,39 @@
+<!--subpackages/shop/order/order.wxml-->
+<view>
+  <view class="order full flex-col">
+    <!-- label栏 -->
+    <view class="label flex-cen">
+      <view class="item" wx:for="{{label}}" wx:key="index" data-index="{{index}}" bindtap="selectLabel"><view class="text">{{item}}<view class="after {{labelIndex == index ? 'on' : ''}}"></view></view></view>
+    </view>
+    <!-- 列表栏 -->
+    <view class="flex1 ordere-list">
+      <swiper indicator-dots="{{indicatorDots}}" current="{{labelIndex}}" duration="{{300}}" bindchange="bindchangeSwiper">
+        <block wx:for="{{4}}" wx:key="*this">
+          <swiper-item>
+            <scroll-view scroll-y data-index="{{index}}" bindscrolltolower="bindscrolltolower">
+              <view class="li">
+                <view class="goods">
+                  <view class="item flex-cen">
+                    <view class="img"><image src="http://game.flyh5.cn/resources/game/wechat/szq/images/good_02.jpg"></image></view>
+                    <view>
+                      <view>
+                        <view class="h3">鹰牌花旗参饮料提神抗疲劳一箱24瓶</view>
+                        <view class="h4">310ml</view>
+                        <view class="h5">x1</view>
+                      </view>
+                      <view class="p">￥168.00</view>
+                    </view>
+                  </view>
+                </view>
+                <view class="btns">
+                  <button>删除订单</button>
+                  <button>去付款</button>
+                </view>
+              </view>
+            </scroll-view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>

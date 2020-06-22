@@ -1,0 +1,12 @@
+<!-- <view class='slide' style="width:{{width}}">
+  <view class='buyMian-slide-contain'>
+    <slider class='slider-left' style='width:{{slider1W+"%"}}' block-size="{{blockSize}}" step="{{step}}" min='{{min}}' max='{{slider1Max}}' backgroundColor='{{colors[1]}}' activeColor='{{colors[0]}}' block-color='{{colors[2]}}' bindchanging='changing' catchtouchstart='changeStart' bindchange='changed' data-idx='1'></slider>
+    <slider wx:if='{{!change}}' class='slider-right' style='width:{{slider2W+"%"}}' block-size="{{blockSize}}" step="{{step}}" min='{{slider2Min}}' max='{{max}}' backgroundColor='{{colors[0]}}' activeColor='{{colors[1]}}' block-color='{{colors[2]}}' bindchanging='changing' catchtouchstart='changeStart' bindchange='changed' data-idx='2'></slider>
+  </view>
+</view> -->
+<view class="full flex-cen">
+  <view class="slider-box">
+    <view class="val">{{val.valMin}}--{{val.valMax}}</view>
+    <slider-two options="{{options}}" bindcurValue="bindcurValue"></slider-two>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<!--pages/login/login.wxml-->
+<view class="container body flex-cen">
+  <view class="user" bindtap="getUserInfo">
+    <image src="{{userInfo.avatarUrl || 'http://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets/my/avatar.png'}}"></image>
+    <view class="nick-name">{{userInfo.nickName ? userInfo.nickName : '点击授权'}}</view>
+  </view>
+  <!-- 获取用户信息_授权 -->
+  <getUserInfo bindgetUserInfoCallback="bindgetUserInfoCallback" id="authUserInfo"></getUserInfo>
+</view>
