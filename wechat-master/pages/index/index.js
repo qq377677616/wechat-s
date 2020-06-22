@@ -49,9 +49,9 @@ Page({
       { name: "滑动事件", url: "/subpackagesA/touch-event/touch-event"},
       { name: "拖拽", url: "/subpackagesA/move/move"},
       { name: "播放音效", url: "/subpackagesA/audio/audio"},
-      { name: "状态管理", url: "/subpackagesA/wxministore/wxministore"},
-      { name: "数字滚动", url: "/subpackagesA/countUp/countUp"},
-      // { name: "商城集合", url: "/subpackagesB/shop/index"},
+      // { name: "状态管理", url: "/subpackagesA/wxministore/wxministore"},
+      // { name: "数字滚动", url: "/subpackagesA/countUp/countUp"},
+      { name: "商城集合", url: "/subpackagesB/shop/index"},
       { name: "测试", url: "/pages/pages-list/test/test"}
       // { name: "下一版本见...", url: ""}
     ]
